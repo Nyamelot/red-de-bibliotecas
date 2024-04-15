@@ -5,12 +5,14 @@
  * Fundamentos de Ingeniería del Software
  * 
  * @date 15 Abr 2024
- * @brief Programa para dar soporte a una red de bibliotecas
+ * @brief Fichero con la declaración de diferentes funciones de utilidad para el programa
 */
 
-#include "tools.h"
 #include "usuarios.h"
 
-int main(int argc, char* argv[]) {
-  // Incorporar menú con opciones
-}
+#ifndef TOOLS_H
+#define TOOLS_H
+
+Persona IniciarSesion(std::string nombre_usuario, std::string contraseña);
+
+#endif
