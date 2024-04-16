@@ -8,11 +8,12 @@
  * @brief Fichero con la declaración de diferentes funciones de utilidad para el programa
 */
 
+#include <optional>
+
 #include "usuarios.h"
 
 #ifndef TOOLS_H
 #define TOOLS_H
 
-Persona IniciarSesion(std::string nombre_usuario, std::string contraseña);
-
+std::optional<Persona*> IniciarSesion(std::string nombre_usuario, std::string contraseña);
 #endif

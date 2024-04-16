@@ -8,9 +8,15 @@
  * @brief Programa para dar soporte a una red de bibliotecas
 */
 
+#include <iostream>
+
 #include "tools.h"
 #include "usuarios.h"
 
 int main(int argc, char* argv[]) {
   // Incorporar menú con opciones
+  std::optional<Persona*> prueba = IniciarSesion("antonio", "antonio");
+  if (prueba.has_value()) {
+    std::cout << "correcto" << std::endl;
+  }
 }

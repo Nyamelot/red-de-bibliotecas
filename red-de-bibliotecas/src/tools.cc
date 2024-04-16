@@ -21,14 +21,17 @@ std::optional<Persona*> IniciarSesion(std::string nombre_usuario, std::string co
   std::string contraseña_a_comprobar;
   int numero_intentos{0};
   Persona* persona_a_retornar = nullptr;
-  while (fichero_usuarios >> nombre_a_comprobar >> contraseña) {
+  std::string linea_a_comprobar{""};
+  while (std::getline(fichero_usuarios, linea_a_comprobar)) {
+    nombre_a_comprobar = linea_a_comprobar[0];
+    contraseña = linea_a_comprobar[1];
     if (nombre_usuario == nombre_a_comprobar) {
-      while (contraseña != contraseña_a_comprobar && numero_intentos < 4) {
+      while (contraseña != contraseña_a_comprobar && numero_intentos < 5) {
         std::cout << "error. La contraseña no es correta." << std::endl;
         std::cin >> contraseña;
         ++numero_intentos;
       }
-      if (numero_intentos == 4) {
+      if (numero_intentos == 5) {
         std::cout << "error. Se ha exedido el máximo número de intentos." << std::endl;
         return std::nullopt;
       }
@@ -40,12 +43,12 @@ std::optional<Persona*> IniciarSesion(std::string nombre_usuario, std::string co
   std::ifstream fichero_bibliotecarios{"bibliotecarios_registrados.txt"};
   while (fichero_bibliotecarios >> nombre_a_comprobar >> contraseña) {
     if (nombre_usuario == nombre_a_comprobar) {
-      while (contraseña != contraseña_a_comprobar && numero_intentos < 4) {
+      while (contraseña != contraseña_a_comprobar && numero_intentos < 5) {
         std::cout << "error. La contraseña no es correta." << std::endl;
         std::cin >> contraseña;
         ++numero_intentos;
       }
-      if (numero_intentos == 4) {
+      if (numero_intentos == 5) {
         std::cout << "error. Se ha exedido el máximo número de intentos." << std::endl;
         return std::nullopt;
       }

@@ -18,16 +18,15 @@
 
 class Persona {
  public:
-  Persona() {  }
+  Persona() : nombre_completo_(3) {  }
   ~Persona() {  }
   void virtual PrestamoRecurso() = 0;
   void virtual DevolverRecurso() = 0;
  protected:
-  std::string nombre_;
-  int fecha_nacimiento_;
+  std::vector<std::string> nombre_completo_;
   Nif dni_;
   std::string correo_;
-  int telefono_;
+  long telefono_;
   std::string direccion_;
   std::string nombre_usuario_;
   std::string contraseña_;
@@ -36,6 +35,8 @@ class Persona {
   bool nuevo_registro_;
 };
 
+// Los usuarios se almacenarán según el siguiente esquema:
+// Nombre_de_usuario Contraseña Nombre Apellido1 Apellido2 DNI Correo Telefono Libros_reservados
 class Usuario : public Persona {
  public:
   Usuario() : Persona() {  }
