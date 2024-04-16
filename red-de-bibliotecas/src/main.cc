@@ -15,7 +15,8 @@
 
 int main(int argc, char* argv[]) {
   // Incorporar menú con opciones
-  std::optional<Persona*> prueba = IniciarSesion("antonio", "antonio");
+  std::string antonio{"antonio"};
+  std::optional<Persona*> prueba = IniciarSesion(antonio, "juan");
   if (prueba.has_value()) {
     std::cout << "correcto" << std::endl;
   }

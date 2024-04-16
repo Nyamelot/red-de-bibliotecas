@@ -40,8 +40,8 @@ class Persona {
 class Usuario : public Persona {
  public:
   Usuario() : Persona() {  }
-  virtual void PrestamoRecurso();
-  virtual void DevolverRecurso();
+  virtual void PrestamoRecurso() {  }
+  virtual void DevolverRecurso() {  }
  protected:
   //std::vector<Libro> prestamos_;
 };
@@ -49,8 +49,8 @@ class Usuario : public Persona {
 class Bibliotecario : public Persona {
  public:
   Bibliotecario() : Persona() {  }
-  virtual void PrestamoRecurso();
-  virtual void DevolverRecurso();
+  virtual void PrestamoRecurso() {  }
+  virtual void DevolverRecurso() {  }
   protected:
 };
 
