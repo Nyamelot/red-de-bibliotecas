@@ -17,12 +17,12 @@
 #define USUARIOS_H
 
 class Persona {
-  public:
+ public:
   Persona() {  }
   ~Persona() {  }
   void virtual PrestamoRecurso() = 0;
   void virtual DevolverRecurso() = 0;
-  protected:
+ protected:
   std::string nombre_;
   int fecha_nacimiento_;
   Nif dni_;
@@ -37,16 +37,16 @@ class Persona {
 };
 
 class Usuario : public Persona {
-  public:
+ public:
   Usuario() : Persona() {  }
   virtual void PrestamoRecurso();
   virtual void DevolverRecurso();
-  protected:
+ protected:
   //std::vector<Libro> prestamos_;
 };
 
 class Bibliotecario : public Persona {
-  public:
+ public:
   Bibliotecario() : Persona() {  }
   virtual void PrestamoRecurso();
   virtual void DevolverRecurso();
