@@ -8,7 +8,8 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-
+    bool ConsultarDisponibilidad(string) const;
+    
     void buscarLibro() {
         cout << "Buscando libro en el catálogo...\n";
     }

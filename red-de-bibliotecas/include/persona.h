@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 
+
 using namespace std;
 
 // Clase base Persona
@@ -23,7 +24,7 @@ public:
 
     virtual void iniciarSesion();
     virtual void registrarse();
-
+    virtual bool ConsultarDisponibilidad(string) const;
 };
 
 void Persona::iniciarSesion() {

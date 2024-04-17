@@ -9,7 +9,8 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-
+    bool ConsultarDisponibilidad(string) const;
+    
      void gestionarUsuarios() {
         cout << "Gestionando usuarios del sistema...\n";
     }
