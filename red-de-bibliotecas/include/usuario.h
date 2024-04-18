@@ -1,5 +1,6 @@
 
 #include "persona.h"
+#include "libro.h"
 
 class Usuario : public Persona {
 public:
@@ -9,6 +10,8 @@ public:
     void iniciarSesion() override;
     void registrarse() override;
     bool ConsultarDisponibilidad(string) const;
+    Libro PedirPrestamo() override;
+
     
     void buscarLibro() {
         cout << "Buscando libro en el catálogo...\n";
@@ -36,5 +39,25 @@ void Usuario::iniciarSesion() {
 void Usuario::registrarse() {
     cout << "=== Registro de usuario ===" << endl;
     Persona::registrarse();
+}
+
+Libro Usuario::PedirPrestamo() {
+    cout << "=== Pedir préstamo === " << endl;
+    cout << "Introduzca el libro que desea" << endl;
+
+    string nombreLibro, nombreAutor;
+    cin >> nombreLibro;
+    
+    cout << "Introduzca el autor del libro que desea" << endl;
+    cin >> nombreAutor;
+
+    if (ConsultarDisponibilidad(nombreLibro)) {
+        cout << "Libro disponible" << endl;
+        Libro libro(nombreLibro, nombreAutor);
+        return libro;
+    } else {
+        cout << "El libro no se encuentra disponible" << endl;
+        exit(EXIT_FAILURE);
+    }
 }
 
