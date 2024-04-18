@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include "libro.h"
 
 
 using namespace std;
@@ -25,6 +26,7 @@ public:
     virtual void iniciarSesion();
     virtual void registrarse();
     virtual bool ConsultarDisponibilidad(string) const;
+    virtual Libro PedirPrestamo();
 };
 
 void Persona::iniciarSesion() {
