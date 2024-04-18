@@ -2,8 +2,11 @@
 
 #include <iostream>
 #include <string>
+
 #include "libro.h"
 
+#ifndef PERSONA_H
+#define PERSONA_H
 
 using namespace std;
 
@@ -56,4 +59,4 @@ void Persona::registrarse() {
 }
 
 
-
+#endif

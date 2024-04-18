@@ -10,14 +10,14 @@
 
 #include <iostream>
 
-#include "tools.h"
-#include "usuarios.h"
+#include "controlador_usuarios.h"
 
 int main(int argc, char* argv[]) {
   // Incorporar menú con opciones
   std::string antonio{"antonio"};
-  std::optional<Persona*> prueba = IniciarSesion(antonio, "juan");
-  if (prueba.has_value()) {
+  ControladorUsuarios controlador;
+  Persona* prueba = controlador.IniciarSesion(antonio, "juan");
+  if (prueba != nullptr) {
     std::cout << "correcto" << std::endl;
   }
 }

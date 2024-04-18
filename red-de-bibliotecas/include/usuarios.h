@@ -8,7 +8,7 @@
  * @brief Clases para identificar a los diferentes perfiles que formarán parte de la infraestructura de la biblioteca
 */
 
-#include <string>
+/*#include <string>
 #include <vector>
 
 #include "nif.h"
@@ -54,4 +54,4 @@ class Bibliotecario : public Persona {
   protected:
 };
 
-#endif
+#endif*/

@@ -2,6 +2,9 @@
 #include "persona.h"
 #include "libro.h"
 
+#ifndef USUARIO_H
+#define USUARIO_H
+
 class Usuario : public Persona {
 public:
     Usuario(string nombre, string apellidos, string dni, string correoElectronico, string contrasena, string nombreUsuario)
@@ -61,3 +64,4 @@ Libro Usuario::PedirPrestamo() {
     }
 }
 
+#endif

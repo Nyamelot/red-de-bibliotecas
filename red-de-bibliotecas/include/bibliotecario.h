@@ -1,6 +1,9 @@
 
 #include "persona.h"
 
+#ifndef BIBLIOTECARIO_H
+#define BIBLIOTECARIO_H
+
 class Bibliotecario : public Persona {
 public:
     Bibliotecario(string nombre, string apellidos, string dni, string correoElectronico, string contrasena, string nombreUsuario)
@@ -42,3 +45,5 @@ void Bibliotecario::registrarse() {
     cout << "=== Registro de bibliotecario ===" << endl;
     Persona::registrarse();
 }
+
+#endif
