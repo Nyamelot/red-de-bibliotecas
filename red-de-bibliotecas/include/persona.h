@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include "libro.h"
+#include "inventario.h"
 
 
 using namespace std;

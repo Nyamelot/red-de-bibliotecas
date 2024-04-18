@@ -10,11 +10,12 @@
  * @brief Fichero con la declaración de la clase de Nif
 */
 
+#ifndef NIF_H
+#define NIF_H
+
 #include <cstdlib>
 #include <iomanip>
 
-#ifndef NIF_H
-#define NIF_H
 
 class Nif {
   public:

@@ -1,6 +1,6 @@
 
 #include "persona.h"
-#include "libro.h"
+#include "inventario.h"
 
 class Usuario : public Persona {
 public:
@@ -9,7 +9,7 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-    bool ConsultarDisponibilidad(string) const;
+    bool ConsultarDisponibilidad(string,) const;
     Libro PedirPrestamo() override;
 
     
@@ -40,6 +40,13 @@ void Usuario::registrarse() {
     cout << "=== Registro de usuario ===" << endl;
     Persona::registrarse();
 }
+
+
+bool Usuario::ConsultarDisponibilidad(string nombre_libro) {
+
+}
+
+
 
 Libro Usuario::PedirPrestamo() {
     cout << "=== Pedir préstamo === " << endl;

@@ -8,11 +8,7 @@
  * @brief Fichero con la definición de diferentes funciones de utilidad para el programa
 */
 
-#include <iostream>
-#include <fstream>
-#include <optional>
-#include <sstream>
-
+#include "inventario.h"
 #include "usuarios.h"
 
 std::optional<Persona*> IniciarSesion(std::string nombre_usuario, std::string contraseña) {
@@ -75,4 +71,28 @@ std::optional<Persona*> IniciarSesion(std::string nombre_usuario, std::string co
   std::cout << "error. No se ha encontrado el usuario." << std::endl;
   fichero_bibliotecarios.close();
   return std::nullopt;
+}
+
+//Funcion que comprueba la apertura del fichero que contiene el inventario
+bool AbrirInventario(std::ifstream& archivo_inventario, std::string nombre_archivo_inventario) {
+  
+  bool apertura_correcta{true};
+  archivo_inventario.open(nombre_archivo_inventario);
+  if (!archivo_inventario.is_open()) {
+    apertura_correcta = false;
+  }
+
+  return apertura_correcta;
+}
+
+//Funcion que comprueba si el archivo se ha cerrado correctamente
+bool CerarInventario(std::ifstream& archivo_inventario) {
+
+  bool cerrar_correcto{true};
+  archivo_inventario.close();
+  if (archivo_inventario.is_open()) {
+    cerrar_correcto = false;
+  }
+
+  return cerrar_correcto;
 }

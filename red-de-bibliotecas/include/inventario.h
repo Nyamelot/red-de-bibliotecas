@@ -4,13 +4,28 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
+#include "tools.h"
+#include "libro.h"
 
 class Inventario {
   
   public:
-
-  virtual void PedirPrestamo();
+  Inventario(std::ifstream&);
+  
+  private:
+  std::vector<Libro*> inventario_; //Contiene todos los libros en el catalogo
+  
 };
+
+Inventario::Inventario(std::ifstream& archivo_inventario) {
+  
+  if (AbrirInventario(archivo_inventario,std::string nombre{"lista_inventario.txt"})) {
+    
+  }
+  CerarInventario(archivo_inventario);
+}
 
 #endif  //INVENTARIO_H
 

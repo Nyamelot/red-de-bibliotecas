@@ -1,5 +1,6 @@
 
 #include "persona.h"
+#include "inventario.h"
 
 class Administrador : public Persona {
 public:
