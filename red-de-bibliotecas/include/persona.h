@@ -2,8 +2,15 @@
 
 #include <iostream>
 #include <string>
+<<<<<<< HEAD
 #include "inventario.h"
+=======
 
+#include "libro.h"
+>>>>>>> main
+
+#ifndef PERSONA_H
+#define PERSONA_H
 
 using namespace std;
 
@@ -56,4 +63,4 @@ void Persona::registrarse() {
 }
 
 
-
+#endif

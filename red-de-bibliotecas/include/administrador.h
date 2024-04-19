@@ -2,6 +2,9 @@
 #include "persona.h"
 #include "inventario.h"
 
+#ifndef ADMINISTRADOR_H
+#define ADMINISTRADOR_H
+
 class Administrador : public Persona {
 public:
     Administrador(string nombre, string apellidos, string dni, string correoElectronico, string contrasena, string nombreUsuario)
@@ -43,3 +46,5 @@ void Administrador::registrarse() {
     cout << "=== Registro de administrador ===" << endl;
     Persona::registrarse();
 }
+
+#endif
