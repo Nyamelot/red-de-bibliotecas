@@ -8,14 +8,7 @@
  * @brief Fichero con la definición de diferentes funciones de utilidad para el programa
 */
 
-#include <iostream>
-#include <fstream>
-
 #include "controlador_usuarios.h"
-#include "persona.h"
-#include "usuario.h"
-#include "bibliotecario.h"
-#include "administrador.h"
 
 /**
  * @brief Inicia la sesión del usuario que se ha pasado como argumento

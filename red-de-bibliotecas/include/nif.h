@@ -13,6 +13,10 @@
 #ifndef NIF_H
 #define NIF_H
 
+#include <vector>
+#include <ctime>
+#include <iostream>
+#include <cmath>
 #include <cstdlib>
 #include <iomanip>
 

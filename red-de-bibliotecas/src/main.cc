@@ -8,9 +8,9 @@
  * @brief Programa para dar soporte a una red de bibliotecas
 */
 
-#include <iostream>
 
-#include "controlador_usuarios.h"
+
+#include "controlador_usuarios.cc"
 
 int main(int argc, char* argv[]) {
   // Incorporar menú con opciones

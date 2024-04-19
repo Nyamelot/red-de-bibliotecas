@@ -8,14 +8,7 @@
  * @brief Clases para identificar a los diferentes perfiles que formarán parte de la infraestructura de la biblioteca
 */
 
-<<<<<<< HEAD
-#ifndef USUARIOS_H
-#define USUARIOS_H
-
-#include <string>
-=======
 /*#include <string>
->>>>>>> main
 #include <vector>
 
 #include "nif.h"

@@ -10,10 +10,7 @@
  * @brief Fichero con la definición de los métodos de la clase de Nif
 */
 
-#include <vector>
-#include <ctime>
-#include <iostream>
-#include <cmath>
+
 
 #include "nif.h"
 

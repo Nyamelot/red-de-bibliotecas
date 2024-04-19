@@ -1,9 +1,11 @@
 
-#include "persona.h"
-#include "inventario.h"
+
 
 #ifndef ADMINISTRADOR_H
 #define ADMINISTRADOR_H
+
+#include "persona.h"
+#include "inventario.h"
 
 class Administrador : public Persona {
 public:

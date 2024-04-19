@@ -1,9 +1,10 @@
 
-#include "persona.h"
-#include "inventario.h"
 
 #ifndef BIBLIOTECARIO_H
 #define BIBLIOTECARIO_H
+
+#include "persona.h"
+#include "inventario.h"
 
 class Bibliotecario : public Persona {
 public:

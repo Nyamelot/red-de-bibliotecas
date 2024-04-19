@@ -2,11 +2,14 @@
 #ifndef LIBRO_H
 #define LIBRO_H
 
+#include <string>
+#include <iostream>
+
 class Libro {
 
   public:
 
-  Libro(std::string nombre, std::string autor) : nombre_(nombre), nombre_autor_(autor), en_prestamo_(0), dias_para_devolucion_(-1)  {}
+  Libro(std::string nombre, std::string autor, int en_prestamo, int dias_devolucion) : nombre_(nombre), nombre_autor_(autor), en_prestamo_(en_prestamo), dias_para_devolucion_(dias_devolucion)  {}
   void PonerEnPrestamo(std::string);
   
   private:
