@@ -1,8 +1,10 @@
 
-#include "persona.h"
 
 #ifndef BIBLIOTECARIO_H
 #define BIBLIOTECARIO_H
+
+#include "persona.h"
+#include "inventario.h"
 
 class Bibliotecario : public Persona {
 public:
@@ -12,7 +14,7 @@ public:
     void iniciarSesion() override;
     void registrarse() override;
     void ComprobarCatalogo();
-    bool ConsultarDisponibilidad(string) const;
+    bool ConsultarDisponibilidad(string,Inventario&) const;
 
      void ayudarUsuario() {
         cout << "Asistiendo a un usuario...\n";

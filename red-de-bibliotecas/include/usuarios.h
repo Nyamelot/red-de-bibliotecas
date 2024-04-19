@@ -13,8 +13,6 @@
 
 #include "nif.h"
 
-#ifndef USUARIOS_H
-#define USUARIOS_H
 
 class Persona {
  public:

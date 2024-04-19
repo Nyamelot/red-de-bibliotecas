@@ -1,8 +1,11 @@
 
-#include "persona.h"
+
 
 #ifndef ADMINISTRADOR_H
 #define ADMINISTRADOR_H
+
+#include "persona.h"
+#include "inventario.h"
 
 class Administrador : public Persona {
 public:
@@ -12,7 +15,7 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-    bool ConsultarDisponibilidad(string) const;
+    bool ConsultarDisponibilidad(string,Inventario&) const;
     
      void gestionarUsuarios() {
         cout << "Gestionando usuarios del sistema...\n";

@@ -1,9 +1,11 @@
 
-#include "persona.h"
-#include "libro.h"
+
 
 #ifndef USUARIO_H
 #define USUARIO_H
+
+#include "persona.h"
+#include "inventario.h"
 
 class Usuario : public Persona {
 public:
@@ -12,8 +14,8 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-    bool ConsultarDisponibilidad(string) const;
-    Libro PedirPrestamo() override;
+    bool ConsultarDisponibilidad(string, Inventario&) const;
+    Libro PedirPrestamo(Inventario&) override;
 
     
     void buscarLibro() {
@@ -44,7 +46,14 @@ void Usuario::registrarse() {
     Persona::registrarse();
 }
 
-Libro Usuario::PedirPrestamo() {
+/*
+bool Usuario::ConsultarDisponibilidad(string nombre_libro, Inventario& inventario) {
+
+}
+*/
+
+
+Libro Usuario::PedirPrestamo(Inventario& inventario) {
     cout << "=== Pedir préstamo === " << endl;
     cout << "Introduzca el libro que desea" << endl;
 
@@ -54,7 +63,7 @@ Libro Usuario::PedirPrestamo() {
     cout << "Introduzca el autor del libro que desea" << endl;
     cin >> nombreAutor;
 
-    if (ConsultarDisponibilidad(nombreLibro)) {
+    if (ConsultarDisponibilidad(nombreLibro,inventario)) {
         cout << "Libro disponible" << endl;
         Libro libro(nombreLibro, nombreAutor);
         return libro;
