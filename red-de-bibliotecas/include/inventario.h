@@ -23,7 +23,7 @@ class Inventario {
   
 };
 
-//Funcion estatica que comprueba
+//Funcion estatica que comprueba la apartura del fichero con el inventario
 bool Inventario::AbrirInventario(std::ifstream& fichero_inventario, std::string nombre_fichero) {
 
   bool apertura_correcta{true};
@@ -35,14 +35,15 @@ bool Inventario::AbrirInventario(std::ifstream& fichero_inventario, std::string 
   return apertura_correcta;
 }
 
+//Funcion estatica que comprueba el cerrado del fichero con el inventario
 bool Inventario::CerarInventario(std::ifstream& fichero_inventario) {
   bool cerrado_correcto{true};
   fichero_inventario.close();
   if (fichero_inventario.is_open()) {
-    apertura_correcta = false;
+    cerrado_correcto = false;
   }
 
-  return apertura_correcta;
+  return cerrado_correcto;
 }
 
 //Constructor clase inventario
@@ -75,7 +76,7 @@ Inventario::Inventario(std::ifstream& archivo_inventario) {
       std::getline(stream,dias_para_devolucion_str);
       dias_int = std::stoi(dias_para_devolucion_str);
       
-      Libro* libro(nombre_libro,nombre_autor,prestamo_int,dias_int);
+      Libro* libro = new Libro(nombre_libro,nombre_autor,prestamo_int,dias_int);
       inventario_.push_back(libro);
     }
   }

@@ -15,7 +15,7 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-    bool ConsultarDisponibilidad(string) const;
+    bool ConsultarDisponibilidad(string,Inventario&) const;
     
      void gestionarUsuarios() {
         cout << "Gestionando usuarios del sistema...\n";

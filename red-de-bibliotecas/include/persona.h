@@ -29,8 +29,8 @@ public:
 
     virtual void iniciarSesion();
     virtual void registrarse();
-    virtual bool ConsultarDisponibilidad(string) const;
-    virtual Libro PedirPrestamo();
+    virtual bool ConsultarDisponibilidad(string,Inventario&) const;
+    virtual Libro PedirPrestamo(Inventario&);
 };
 
 void Persona::iniciarSesion() {
