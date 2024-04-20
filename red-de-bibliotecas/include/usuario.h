@@ -16,6 +16,7 @@ public:
     void registrarse() override;
     bool ConsultarDisponibilidad(string, Inventario&) const;
     Libro PedirPrestamo(Inventario&) override;
+    void DevolverPrestamo(Libro*, Inventario&);
 
     
     void buscarLibro() {
@@ -71,6 +72,23 @@ Libro Usuario::PedirPrestamo(Inventario& inventario) {
         cout << "El libro no se encuentra disponible" << endl;
         exit(EXIT_FAILURE);
     }
+}
+
+//Devolver prestamo 
+void Usuario::DevolverPrestamo(Libro* libro, Inventario& inventario) {
+    cout << "=== Devolver préstamo ===" << endl;
+    cout << "Introduzca el libro que desea devolver" << endl;
+
+    string nombreLibro, nombreAutor;
+    cin >> nombreLibro;
+    
+    cout << "Introduzca el autor del libro que desea devolver" << endl;
+    cin >> nombreAutor;
+
+    inventario.AgregarLibro(libro);
+
+    std::cout << "Libro devuelto con éxito" << std::endl;
+
 }
 
 #endif

@@ -13,11 +13,14 @@ class Inventario {
   
   public:
   Inventario(std::ifstream&);
+  std::vector<Libro*> AgregarLibro(Libro*);
   
   private:
 
   static bool AbrirInventario(std::ifstream&, std::string);
   static bool CerarInventario(std::ifstream&);
+  //agregar libro al inventario
+  
 
   std::vector<Libro*> inventario_; //Contiene todos los libros en el catalogo
   
@@ -82,6 +85,12 @@ Inventario::Inventario(std::ifstream& archivo_inventario) {
   }
 
   CerarInventario(archivo_inventario);
+}
+
+//Funcion que agrega un libro al inventario
+std::vector<Libro*> Inventario::AgregarLibro(Libro* libro) {
+  inventario_.push_back(libro);
+  return inventario_;
 }
 
 #endif  //INVENTARIO_H
