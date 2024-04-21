@@ -23,13 +23,13 @@ class ControladorUsuarios {
   public:
   ControladorUsuarios() {  }
   ~ControladorUsuarios() {  }
-  Persona* IniciarSesion(std::string nombre_usuario, std::string contraseña);
+  Persona* IniciarSesion(std::string nombre_usuario, std::string contrasena);
   Persona* Registrarse();
   private:
   // Métodos privados de apoyo
-  Persona* BuscaUsuario(std::string nombre_usuario, std::string contraseña);
-  Persona* BuscaBibliotecario(std::string nombre_usuario, std::string contraseña);
-  Persona* BuscaAdmin(std::string nombre_usuario, std::string contraseña);
+  Persona* BuscaUsuario(std::string nombre_usuario, std::string contrasena);
+  Persona* BuscaBibliotecario(std::string nombre_usuario, std::string contrasena);
+  Persona* BuscaAdmin(std::string nombre_usuario, std::string contrasena);
   Persona* RegistrarUsuario();
   Persona* RegistrarBibliotecario();
   Persona* RegistrarAdmin();

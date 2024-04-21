@@ -26,7 +26,7 @@ Persona* ControladorUsuarios::IniciarSesion(std::string nombre_usuario, std::str
     usuario_a_retornar = BuscaAdmin(nombre_usuario, contrasena);
   }
   if (usuario_a_retornar == nullptr){
-    std::cout << "error. No se ha encontrado el usuario." << std::endl;
+    std::cout << "error. Usuario no encontrado." << std::endl;
     return nullptr;
   }
   return usuario_a_retornar;
@@ -226,6 +226,7 @@ Persona* ControladorUsuarios::Registrarse() {
       usuario_a_retornar = RegistrarUsuario();
       return usuario_a_retornar;
       break;
+
     case 1:
       std::cout << "Introduce las creedenciales de un bibliotecario o un administrador para continuar." << std::endl;
       std::cout << "Nombre de usuario: ";
@@ -238,6 +239,7 @@ Persona* ControladorUsuarios::Registrarse() {
       }
       usuario_a_retornar = RegistrarBibliotecario();
       break;
+
     case 2:
       std::cout << "Introduce las creedenciales de un administrador para continuar." << std::endl;
       std::cout << "Nombre de usuario: ";
@@ -250,6 +252,7 @@ Persona* ControladorUsuarios::Registrarse() {
       }
       usuario_a_retornar = RegistrarAdmin();
       break;
+
     default:
       std::cout << "error. No se ha elegido una opción válida." << std::endl;
       return nullptr;
@@ -285,6 +288,13 @@ Persona* ControladorUsuarios::RegistrarUsuario() {
   std::cin >> nombre_usuario;
   std::cout << std::endl << "Contraseña: ";
   std::cin >> contrasena;
+
+  // Comprobamos que el nombre de usuario no esté ya registrado
+  if(BuscaUsuario(nombre_usuario, contrasena) != nullptr) {
+    std::cout << "error. El nombre de usuario ya está registrado." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
   // Creamos el objeto
   Persona* usuario_a_registrar = new Usuario(nombre, apellido, dni, correo, contrasena, nombre_usuario);
   // Introducimos la información en el fichero
@@ -320,6 +330,13 @@ Persona* ControladorUsuarios::RegistrarBibliotecario() {
   std::cin >> nombre_usuario;
   std::cout << std::endl << "Contraseña: ";
   std::cin >> contrasena;
+
+  // Comprobamos que el nombre de usuario no esté ya registrado
+  if(BuscaBibliotecario(nombre_usuario, contrasena) != nullptr) {
+    std::cout << "error. El nombre de usuario ya está registrado." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
   // Creamos el objeto
   Persona* usuario_a_registrar = new Bibliotecario(nombre, apellido, dni, correo, contrasena, nombre_usuario);
   // Introducimos la información en el fichero
@@ -355,6 +372,13 @@ Persona* ControladorUsuarios::RegistrarAdmin() {
   std::cin >> nombre_usuario;
   std::cout << std::endl << "Contraseña: ";
   std::cin >> contrasena;
+
+  // Comprobamos que el nombre de usuario no esté ya registrado
+  if(BuscaAdmin(nombre_usuario, contrasena) != nullptr) {
+    std::cout << "error. El nombre de usuario ya está registrado." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
   // Creamos el objeto
   Persona* usuario_a_registrar = new Administrador(nombre, apellido, dni, correo, contrasena, nombre_usuario);
   // Introducimos la información en el fichero
