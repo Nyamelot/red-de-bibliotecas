@@ -288,7 +288,7 @@ Persona* ControladorUsuarios::RegistrarUsuario() {
   // Creamos el objeto
   Persona* usuario_a_registrar = new Usuario(nombre, apellido, dni, correo, contrasena, nombre_usuario);
   // Introducimos la información en el fichero
-  fichero_usuarios << nombre_usuario << " " << contrasena << " " << nombre << " " << apellido << " " << dni << " " << correo << std::endl;
+  fichero_usuarios << std::endl << nombre_usuario << " " << contrasena << " " << nombre << " " << apellido << " " << dni << " " << correo;
   return usuario_a_registrar;
 }
 
@@ -323,7 +323,7 @@ Persona* ControladorUsuarios::RegistrarBibliotecario() {
   // Creamos el objeto
   Persona* usuario_a_registrar = new Bibliotecario(nombre, apellido, dni, correo, contrasena, nombre_usuario);
   // Introducimos la información en el fichero
-  fichero_usuarios << nombre_usuario << " " << contrasena << " " << nombre << " " << apellido << " " << dni << " " << correo << std::endl;
+  fichero_usuarios << std::endl << nombre_usuario << " " << contrasena << " " << nombre << " " << apellido << " " << dni << " " << correo;
   return usuario_a_registrar;
 }
 
@@ -358,6 +358,6 @@ Persona* ControladorUsuarios::RegistrarAdmin() {
   // Creamos el objeto
   Persona* usuario_a_registrar = new Administrador(nombre, apellido, dni, correo, contrasena, nombre_usuario);
   // Introducimos la información en el fichero
-  fichero_usuarios << nombre_usuario << " " << contrasena << " " << nombre << " " << apellido << " " << dni << " " << correo << std::endl;
+  fichero_usuarios << std::endl << nombre_usuario << " " << contrasena << " " << nombre << " " << apellido << " " << dni << " " << correo;
   return usuario_a_registrar;
 }

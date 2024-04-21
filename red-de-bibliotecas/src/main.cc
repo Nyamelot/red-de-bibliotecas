@@ -12,10 +12,13 @@
 
 int main(int argc, char* argv[]) {
   // Incorporar menú con opciones
-  std::string antonio{"antonio"};
+  std::string usuario{""};
+  std::string contraseña{""};
+  std::cin >> usuario >> contraseña;
   ControladorUsuarios controlador;
-  Persona* prueba = controlador.IniciarSesion(antonio, "juan");
+  Persona* prueba = controlador.IniciarSesion(usuario, contraseña);
   if (prueba != nullptr) {
     std::cout << "correcto" << std::endl;
   }
+  Persona* prueba2 = controlador.Registrarse();
 }
