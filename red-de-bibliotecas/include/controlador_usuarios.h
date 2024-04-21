@@ -5,22 +5,19 @@
  * Fundamentos de Ingeniería del Software
  * 
  * @date 15 Abr 2024
- * @brief Fichero con la declaración de diferentes funciones de utilidad para el programa
+ * @brief Fichero con la declaración de la clase ControladorUsuarios
 */
-
-
-
-#ifndef CONTROLADOR_USUARIOS_H
-#define CONTROLADOR_USUARIOS_H
 
 #include <iostream>
 #include <fstream>
-
 
 #include "persona.h"
 #include "usuario.h"
 #include "bibliotecario.h"
 #include "administrador.h"
+
+#ifndef CONTROLADOR_USUARIOS_H
+#define CONTROLADOR_USUARIOS_H
 
 class ControladorUsuarios {
   public:

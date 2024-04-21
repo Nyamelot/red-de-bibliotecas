@@ -1,10 +1,18 @@
-
-
-#ifndef BIBLIOTECARIO_H
-#define BIBLIOTECARIO_H
+/**
+ * Universidad de La Laguna
+ * Escuela Superior de Ingniería y tecnología
+ * Grado en Ingeniería Informática
+ * Fundamentos de Ingeniería del Software
+ * 
+ * @date 15 Abr 2024
+ * @brief Fichero con la declaración de la clase Bibliotecario
+*/
 
 #include "persona.h"
 #include "inventario.h"
+
+#ifndef BIBLIOTECARIO_H
+#define BIBLIOTECARIO_H
 
 class Bibliotecario : public Persona {
 public:
@@ -13,8 +21,8 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-    void ComprobarCatalogo();
-    bool ConsultarDisponibilidad(string,Inventario&) const;
+    void ComprobarCatalogo() {}
+    bool ConsultarDisponibilidad(string,Inventario&) const {}
 
      void ayudarUsuario() {
         cout << "Asistiendo a un usuario...\n";
@@ -37,15 +45,5 @@ public:
     }
 
 };
-
-void Bibliotecario::iniciarSesion() {
-    cout << "=== Inicio de sesión como bibliotecario ===" << endl;
-    Persona::iniciarSesion();
-}
-
-void Bibliotecario::registrarse() {
-    cout << "=== Registro de bibliotecario ===" << endl;
-    Persona::registrarse();
-}
 
 #endif

@@ -1,11 +1,18 @@
-
-
-
-#ifndef ADMINISTRADOR_H
-#define ADMINISTRADOR_H
+/**
+ * Universidad de La Laguna
+ * Escuela Superior de Ingniería y tecnología
+ * Grado en Ingeniería Informática
+ * Fundamentos de Ingeniería del Software
+ * 
+ * @date 15 Abr 2024
+ * @brief Fichero con la declaración de la clase Administrador
+*/
 
 #include "persona.h"
 #include "inventario.h"
+
+#ifndef ADMINISTRADOR_H
+#define ADMINISTRADOR_H
 
 class Administrador : public Persona {
 public:
@@ -15,7 +22,7 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
-    bool ConsultarDisponibilidad(string,Inventario&) const;
+    bool ConsultarDisponibilidad(string,Inventario&) const {}
     
      void gestionarUsuarios() {
         cout << "Gestionando usuarios del sistema...\n";
@@ -38,15 +45,5 @@ public:
     }
 
 };
-
-void Administrador::iniciarSesion() {
-    cout << "=== Inicio de sesión como administrador ===" << endl;
-    Persona::iniciarSesion();
-}
-
-void Administrador::registrarse() {
-    cout << "=== Registro de administrador ===" << endl;
-    Persona::registrarse();
-}
 
 #endif
