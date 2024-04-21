@@ -22,7 +22,7 @@
 
 
 class Nif {
-  public:
+ public:
   Nif();
   Nif(long valor_nif);
   ~Nif() {  };
