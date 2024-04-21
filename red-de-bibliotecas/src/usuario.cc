@@ -56,3 +56,30 @@ void Usuario::DevolverPrestamo(Libro* libro, Inventario& inventario) {
     std::cout << "Libro devuelto con éxito" << std::endl;
 
 }
+
+void Usuario::MainMenu() {
+    int option;
+    do {
+        std::cout << "\n=== MENÚ PRINCIPAL DE USUARIO ===\n";
+        std::cout << "  [1] Pedir préstamo\n";
+        std::cout << "  [2] Devolver Préstamos\n";
+        std::cout << "  [3] Cerrar sesión\n";
+        std::cout << "  Seleccione una opción: ";
+        std::cin >> option;
+        if (option == 1) {
+            std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
+            // std::ifstream inventario("lista_inventario.txt");
+            // Inventario inventario_obj(inventario);            
+            // this->PedirPrestamo(inventario_obj);
+        } else if (option == 2) {
+            std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
+            // std::ifstream inventario("lista_inventario.txt");
+            // Inventario inventario_obj(inventario);
+        } else if (option == 3) {
+            std::cout << "\nCerrarndo sesión...\n";
+        } else {
+            std::cout << "\nOpción inválida. Intente nuevamente.\n";
+        }
+    } while (option != 3);
+    std::cout << std::endl;
+}

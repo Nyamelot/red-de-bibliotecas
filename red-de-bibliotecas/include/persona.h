@@ -38,6 +38,7 @@ public:
     virtual void registrarse();
     virtual bool ConsultarDisponibilidad(string,Inventario&) const {}
     virtual Libro PedirPrestamo(Inventario&) {}
+    virtual void MainMenu() = 0;
 };
 
 #endif

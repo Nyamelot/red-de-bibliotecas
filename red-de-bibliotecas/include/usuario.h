@@ -24,6 +24,7 @@ public:
     bool ConsultarDisponibilidad(string, Inventario&) const {}
     Libro PedirPrestamo(Inventario&) override;
     void DevolverPrestamo(Libro*, Inventario&);
+    void MainMenu() override;
 
     
     void buscarLibro() {

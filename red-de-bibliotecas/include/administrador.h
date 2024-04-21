@@ -23,6 +23,7 @@ public:
     void iniciarSesion() override;
     void registrarse() override;
     bool ConsultarDisponibilidad(string,Inventario&) const {}
+    void MainMenu() override;
     
      void gestionarUsuarios() {
         cout << "Gestionando usuarios del sistema...\n";

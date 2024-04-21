@@ -21,6 +21,7 @@ public:
 
     void iniciarSesion() override;
     void registrarse() override;
+    void MainMenu() override;
     void ComprobarCatalogo() {}
     bool ConsultarDisponibilidad(string,Inventario&) const {}
 
