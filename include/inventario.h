@@ -20,12 +20,11 @@
 #define INVENTARIO_H
 
 class Inventario {
-  
-  public:
+ public:
   Inventario(std::ifstream&);
   std::vector<Libro*> AgregarLibro(Libro*);
   
-  private:
+ private:
 
   static bool AbrirInventario(std::ifstream&, std::string);
   static bool CerarInventario(std::ifstream&);
