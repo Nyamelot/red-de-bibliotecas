@@ -38,7 +38,10 @@ void LoginMenu() {
   } else if (option == 2) {
     std::cout << "\n=== RESGISTRARSE ===\n";
     ControladorUsuarios controlador;
-    Persona* nuevo_usuario = controlador.Registrarse();
+    Persona* nuevo_usuario = nullptr;
+    while (nuevo_usuario == nullptr) {
+      nuevo_usuario = controlador.Registrarse();
+    }
     nuevo_usuario->MainMenu();
   }
   } while (option != 3);

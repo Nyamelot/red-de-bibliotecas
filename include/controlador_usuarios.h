@@ -12,9 +12,9 @@
 #include <fstream>
 
 #include "persona.h"
-// #include "usuario.h"
-// #include "bibliotecario.h"
-// #include "administrador.h"
+#include "usuario.h"
+#include "bibliotecario.h"
+#include "administrador.h"
 
 #ifndef CONTROLADOR_USUARIOS_H
 #define CONTROLADOR_USUARIOS_H
