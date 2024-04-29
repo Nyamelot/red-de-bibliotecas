@@ -7,7 +7,6 @@
  * @date 15 Abr 2024
  * @brief Fichero con la definición de diferentes funciones de utilidad para el programa
 */
-
 #include "controlador_usuarios.h"
 
 /**

@@ -50,7 +50,7 @@ void Usuario::DevolverPrestamo(Libro* libro, Inventario& inventario) {
 
 }
 
-void Usuario::MainMenu(Inventario* inventario) {
+void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
   int option;
   do {
     std::cout << "\n=== MENÚ PRINCIPAL DE USUARIO ===\n";
@@ -68,7 +68,9 @@ void Usuario::MainMenu(Inventario* inventario) {
       inventario->MostrarInventario();
       std::cout << std::endl;
     } else if (option == 2) {
-      std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
+        std::cout << "\n=== BIBLIOTECAS ===\n";
+        red->MostrarRed();
+        std::cout << std::endl;
     } else if (option == 3) {
       std::cout << "\nCerrarndo sesión...\n";
     } else if (option == 4) {

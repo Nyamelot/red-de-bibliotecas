@@ -13,7 +13,7 @@ void Administrador::registrarse() {
   Persona::registrarse();
 }
 
-void Administrador::MainMenu(Inventario* inventario) {
+void Administrador::MainMenu(Inventario* inventario, RedBibliotecas* red) {
   std::cout << "\n=== MENÚ PRINCIPAL DE ADMINISTRADOR ===\n";
   int option;
   do {
@@ -36,7 +36,9 @@ void Administrador::MainMenu(Inventario* inventario) {
         break;
 
       case 2:
-        std::cout << "\nFunción a implementar por el momento... Vuelva más tarde!\n";
+        std::cout << "\n=== BIBLIOTECAS ===\n";
+        red->MostrarRed();
+        std::cout << std::endl;
         break;
 
       case 3:

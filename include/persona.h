@@ -12,6 +12,7 @@
 #include <string>
 
 #include "inventario.h"
+#include "red_bibliotecas.h"
 
 #ifndef PERSONA_H
 #define PERSONA_H
@@ -38,7 +39,7 @@ class Persona {
   virtual void registrarse();
   virtual bool ConsultarDisponibilidad(string,Inventario&) const {}
   virtual Libro PedirPrestamo(Inventario&) {}
-  virtual void MainMenu(Inventario*) = 0;
+  virtual void MainMenu(Inventario*, RedBibliotecas*) = 0;
 
   string GetNombrePersona() { return nombre_; }
 };

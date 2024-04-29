@@ -13,7 +13,7 @@ class Administrador : public Persona {
   void iniciarSesion() override;
   void registrarse() override;
   bool ConsultarDisponibilidad(string,Inventario&) const {}
-  void MainMenu(Inventario*) override;
+  void MainMenu(Inventario*, RedBibliotecas*) override;
   void gestionarUsuarios() {
     std::cout << "Gestionando usuarios del sistema...\n";
   }

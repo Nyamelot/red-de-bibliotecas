@@ -13,7 +13,7 @@ class Bibliotecario : public Persona {
 
  	void iniciarSesion() override;
  	void registrarse() override;
- 	void MainMenu(Inventario*) override;
+ 	void MainMenu(Inventario*, RedBibliotecas*) override;
  	void ComprobarCatalogo() {}
  	bool ConsultarDisponibilidad(string,Inventario&) const {}
 

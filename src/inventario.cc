@@ -42,7 +42,10 @@ Inventario::Inventario(std::ifstream& archivo_inventario) {
       
       Libro* libro = new Libro(nombre_libro,nombre_autor,prestamo_int,dias_int);
       inventario_.push_back(libro);
-    }
+    } 
+  } else {
+    std::cout << "Error al abrir el fichero" << std::endl;
+    exit(EXIT_FAILURE);
   }
 
   CerarInventario(archivo_inventario);

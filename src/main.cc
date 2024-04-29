@@ -10,13 +10,19 @@
 
 #include "controlador_usuarios.h"
 
-Inventario* CrearInventario() {
+Inventario* InicializarInventario() {
   std::ifstream archivo_inventario;
   Inventario* inventario = new Inventario(archivo_inventario);
   return inventario;
 }
 
-void LoginMenu(Inventario* inventario) {
+RedBibliotecas* InicializarRed() {
+  std::ifstream archivo_inventario;
+  RedBibliotecas* red = new RedBibliotecas(archivo_inventario);
+  return red;
+}
+
+void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
   std::cout << "\033[32m" << "BIENVENIDO A LA SEDE ELECTRONICA DE LA RED DE BIBLIOTECAS!\n\n" << "\033[0m";
 
   int option;
@@ -43,7 +49,7 @@ void LoginMenu(Inventario* inventario) {
       ControladorUsuarios controlador;
       Persona* persona = controlador.IniciarSesion(usuario, contrasena);
       std::cout << "\033[32m" << "\nBIENVENIDO DE NUEVO " << persona->GetNombrePersona() << "!\n" << "\033[0m";
-      persona->MainMenu(inventario);
+      persona->MainMenu(inventario, red);
     } else if (option == 2) {
       std::cout << "\n=== RESGISTRARSE ===\n";
       ControladorUsuarios controlador;
@@ -52,20 +58,23 @@ void LoginMenu(Inventario* inventario) {
         nuevo_usuario = controlador.Registrarse();
       }
       std::cout << "\033[32m" << "\nBIENVENIDO " << nuevo_usuario->GetNombrePersona() << "!\n" << "\033[0m";
-      nuevo_usuario->MainMenu(inventario);
+      nuevo_usuario->MainMenu(inventario, red);
     } else if (option == 3) {
       std::cout << "\n=== INVENTARIO ===\n";
       inventario->MostrarInventario();
       std::cout << std::endl;
     } else if (option == 4) {
       std::cout << "\n=== BIBLIOTECAS ===\n";
+      red->MostrarRed();
+      std::cout << std::endl;
     }
   } while (option != 0);
   std::cout << "\nSaliendo de la sede...\n";
 }
 
 int main() {
-  Inventario *inventario = CrearInventario();
-  LoginMenu(inventario);
+  Inventario *inventario = InicializarInventario();
+  RedBibliotecas *red = InicializarRed();
+  LoginMenu(inventario, red);
   return 0;
 }

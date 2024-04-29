@@ -1,10 +1,10 @@
 
+#ifndef USUARIO_H_
+#define USUARIO_H_
+
 #include <iostream>
 
 #include "persona.h"
-
-#ifndef USUARIO_H_
-#define USUARIO_H_
 
 class Usuario : public Persona {
  public:
@@ -16,7 +16,7 @@ class Usuario : public Persona {
   bool ConsultarDisponibilidad(string, Inventario&) const {}
   Libro PedirPrestamo(Inventario&) override;
   void DevolverPrestamo(Libro*, Inventario&);
-  void MainMenu(Inventario*) override;
+  void MainMenu(Inventario*, RedBibliotecas*) override;
 
     
   void buscarLibro() {
