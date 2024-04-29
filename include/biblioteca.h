@@ -26,6 +26,12 @@ class Biblioteca {
   std::string GetDireccion() const { return direccion_; }
   std::string GetTelefono() const { return telefono_;}
   std::string GetHorario() const { return horario_; }
+  void MostrarInformacionBiblioteca() {
+    std::cout << "Nombre:      " << GetNombre() << std::endl;
+    std::cout << "  Dirección: " << GetDireccion() << std::endl;
+    std::cout << "  Teléfono:  " << GetTelefono() << std::endl;
+    std::cout << "  Horario:   " << GetHorario() << std::endl;
+  }
   
 };
 

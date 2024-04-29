@@ -80,3 +80,54 @@ void RedBibliotecas::MostrarRed() {
     std::cout << std::endl;
   }
 }
+
+Biblioteca* RedBibliotecas::BuscarBiblioteca(std::string nombre_biblioteca) {
+  Biblioteca* biblioteca_encontrada = nullptr;
+  for (int i = 0; i < bibliotecas_.size(); i++) {
+    if (bibliotecas_[i]->GetNombre() == nombre_biblioteca) {
+      biblioteca_encontrada = bibliotecas_[i];
+    }
+  }
+  return biblioteca_encontrada;
+}
+
+std::vector<Biblioteca*> RedBibliotecas::AgregarBiblioteca(Biblioteca* biblioteca) {
+  if (BuscarBiblioteca(biblioteca->GetNombre()) != nullptr) return bibliotecas_;
+  std::ofstream archivo_salida("lista_bibliotecas.txt", std::ios::app);
+  if (archivo_salida.is_open()) {
+    archivo_salida << "\n" << biblioteca->GetNombre() << "|" << biblioteca->GetDireccion() << "|" << biblioteca->GetTelefono() << "|" << biblioteca->GetHorario();
+    archivo_salida.close();
+  } else {
+    std::cout << "Error al abrir el archivo de salida" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  bibliotecas_.push_back(biblioteca);
+  return bibliotecas_;
+}
+
+void RedBibliotecas::EliminarBiblioteca(std::string nombre_biblioteca) {
+  std::ifstream archivo_temp("lista_bibliotecas.txt");
+  std::ofstream archivo_salida("temp.txt");
+  std::string linea_temp;
+  if (archivo_temp.is_open() && archivo_salida.is_open()) {
+    while (std::getline(archivo_temp, linea_temp)) {
+      std::stringstream stream(linea_temp);
+      std::string nombre_biblioteca_temp;
+      std::getline(stream, nombre_biblioteca_temp, '|');
+      if (nombre_biblioteca_temp != nombre_biblioteca) {
+        archivo_salida << linea_temp << std::endl;
+      }
+    }
+    archivo_temp.close();
+    archivo_salida.close();
+    std::rename("temp.txt", "lista_bibliotecas.txt");
+  } else {
+    std::cout << "Error al abrir los archivos" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  for (int i = 0; i < bibliotecas_.size(); i++) {
+    if (bibliotecas_[i]->GetNombre() == nombre_biblioteca) {
+      bibliotecas_.erase(bibliotecas_.begin() + i);
+    }
+  }
+}

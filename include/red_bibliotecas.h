@@ -24,6 +24,9 @@ class RedBibliotecas {
   bool AbrirListado(std::ifstream& fichero_bibliotecas, std::string nombre_fichero);
   bool CerarListado(std::ifstream& fichero_bibliotecas);
   void MostrarRed();
+  std::vector<Biblioteca*> AgregarBiblioteca(Biblioteca* biblioteca);
+  Biblioteca* BuscarBiblioteca(std::string nombre_biblioteca);
+  void EliminarBiblioteca(std::string nombre_biblioteca);
 };
 
 #endif  //RED_BIBLIOTECAS_H
