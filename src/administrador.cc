@@ -38,7 +38,6 @@ void Administrador::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       case 2:
         std::cout << "\n=== BIBLIOTECAS ===\n";
         red->MostrarRed();
-        std::cout << std::endl;
         break;
 
       case 3:

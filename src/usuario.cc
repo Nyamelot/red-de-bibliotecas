@@ -70,7 +70,6 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
     } else if (option == 2) {
         std::cout << "\n=== BIBLIOTECAS ===\n";
         red->MostrarRed();
-        std::cout << std::endl;
     } else if (option == 3) {
       std::cout << "\nCerrarndo sesión...\n";
     } else if (option == 4) {

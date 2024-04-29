@@ -66,7 +66,6 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
     } else if (option == 4) {
       std::cout << "\n=== BIBLIOTECAS ===\n";
       red->MostrarRed();
-      std::cout << std::endl;
     }
   } while (option != 0);
   std::cout << "\nSaliendo de la sede...\n";
