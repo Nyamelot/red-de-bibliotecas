@@ -76,3 +76,10 @@ std::vector<Libro*> Inventario::AgregarLibro(Libro* libro) {
   inventario_.push_back(libro);
   return inventario_;
 }
+
+//Funcion que muestra el inventario
+void Inventario::MostrarInventario() {
+  for (int i = 0; i < inventario_.size(); i++) {
+    std::cout << "Libro " << i+1 << ": " << inventario_[i]->GetNombre() << " de " << inventario_[i]->GetAutor() << std::endl;
+  }
+}

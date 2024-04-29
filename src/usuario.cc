@@ -50,29 +50,38 @@ void Usuario::DevolverPrestamo(Libro* libro, Inventario& inventario) {
 
 }
 
-void Usuario::MainMenu() {
+void Usuario::MainMenu(Inventario* inventario) {
   int option;
   do {
     std::cout << "\n=== MENÚ PRINCIPAL DE USUARIO ===\n";
-    std::cout << "  [1] Pedir préstamo\n";
-    std::cout << "  [2] Devolver Préstamos\n";
-    std::cout << "  [3] Cerrar sesión\n";
+    std::cout << "  [0] Cerrar Sesión\n";
+    std::cout << "  [1] Mostrar Inventario\n";
+    std::cout << "  [2] Mostrar Bibliotecas\n";
+    std::cout << "  [3] Pedir préstamo\n";
+    std::cout << "  [4] Devolver Préstamos\n";
     std::cout << "  Seleccione una opción: ";
     std::cin >> option;
-    if (option == 1) {
+    if (option == 0) {
+      std::cout << "\nCerrando sesión...\n";
+    } else if (option == 1) {
+      std::cout << "\n=== INVENTARIO ===\n";
+      inventario->MostrarInventario();
+      std::cout << std::endl;
+    } else if (option == 2) {
+      std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
+    } else if (option == 3) {
+      std::cout << "\nCerrarndo sesión...\n";
+    } else if (option == 4) {
       std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
       // std::ifstream inventario("lista_inventario.txt");
       // Inventario inventario_obj(inventario);            
       // this->PedirPrestamo(inventario_obj);
-    } else if (option == 2) {
+    } else if (option == 5) {
       std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
         // std::ifstream inventario("lista_inventario.txt");
         // Inventario inventario_obj(inventario);
-    } else if (option == 3) {
-      std::cout << "\nCerrarndo sesión...\n";
     } else {
       std::cout << "\nOpción inválida. Intente nuevamente.\n";
     }
-    } while (option != 3);
-    std::cout << std::endl;
+    } while (option != 0);
 }

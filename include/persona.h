@@ -38,7 +38,9 @@ class Persona {
   virtual void registrarse();
   virtual bool ConsultarDisponibilidad(string,Inventario&) const {}
   virtual Libro PedirPrestamo(Inventario&) {}
-  virtual void MainMenu() = 0;
+  virtual void MainMenu(Inventario*) = 0;
+
+  string GetNombrePersona() { return nombre_; }
 };
 
 #endif

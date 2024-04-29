@@ -13,6 +13,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <map>	
 
 #include "libro.h"
 
@@ -23,16 +24,14 @@ class Inventario {
  public:
   Inventario(std::ifstream&);
   std::vector<Libro*> AgregarLibro(Libro*);
+  void MostrarInventario();
   
  private:
 
   static bool AbrirInventario(std::ifstream&, std::string);
   static bool CerarInventario(std::ifstream&);
-  //agregar libro al inventario
   
-
-  std::vector<Libro*> inventario_; //Contiene todos los libros en el catalogo
-  
+  std::vector<Libro*> inventario_; //Contiene todos los libros en el catalogo  
 };
 
 #endif  //INVENTARIO_H

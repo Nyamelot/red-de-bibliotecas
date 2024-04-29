@@ -21,7 +21,12 @@ class Libro {
   Libro(const Libro&) {}
   void PonerEnPrestamo(std::string);
   Libro GetLibro() {}
-  
+  std::string GetNombre() { return nombre_; }
+  std::string GetAutor() { return nombre_autor_; }
+  std::string GetPropietario() { return nombre_propietario_; }
+  bool GetEnPrestamo() { return en_prestamo_; }
+  int GetDiasParaDevolucion() { return dias_para_devolucion_; }
+
  private:
 
   void ActualizarInventario() {}

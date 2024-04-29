@@ -16,7 +16,7 @@ class Usuario : public Persona {
   bool ConsultarDisponibilidad(string, Inventario&) const {}
   Libro PedirPrestamo(Inventario&) override;
   void DevolverPrestamo(Libro*, Inventario&);
-  void MainMenu() override;
+  void MainMenu(Inventario*) override;
 
     
   void buscarLibro() {
