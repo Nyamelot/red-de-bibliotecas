@@ -74,10 +74,56 @@ bool Inventario::CerarInventario(std::ifstream& fichero_inventario) {
   return cerrado_correcto;
 }
 
+Libro* Inventario::BuscarLibro(std::string nombre_libro) {
+  for (int i = 0; i < inventario_.size(); i++) {
+    if (inventario_[i]->GetNombre() == nombre_libro) {
+      return inventario_[i];
+    }
+  }
+  return nullptr;
+}
+
 //Funcion que agrega un libro al inventario
 std::vector<Libro*> Inventario::AgregarLibro(Libro* libro) {
+  if (BuscarLibro(libro->GetNombre()) != nullptr) return inventario_;
+  std::ofstream archivo_salida("lista_inventario.txt", std::ios::app);
+  if (archivo_salida.is_open()) {
+    archivo_salida << "\n" << libro->GetNombre() << "|" << libro->GetAutor() << "|" << libro->GetEnPrestamo() << "|" << libro->GetDiasParaDevolucion();
+    archivo_salida.close();
+  } else {
+    std::cout << "Error al abrir el archivo de salida" << std::endl;
+    exit(EXIT_FAILURE);
+  }
   inventario_.push_back(libro);
   return inventario_;
+}
+
+void Inventario::EliminarLibro(std::string nombre_libro) {
+  std::ifstream archivo_temp("lista_inventario.txt");
+  std::ofstream archivo_salida("temp.txt");
+  std::string linea_temp;
+
+  if (archivo_temp.is_open() && archivo_salida.is_open()) {
+    while (std::getline(archivo_temp, linea_temp)) {
+      std::stringstream stream(linea_temp);
+      std::string nombre_libro_temp;
+      std::getline(stream, nombre_libro_temp, '|');
+      if (nombre_libro_temp != nombre_libro) {
+        archivo_salida << linea_temp << std::endl;
+      }
+    }
+    archivo_temp.close();
+    archivo_salida.close();
+    std::rename("temp.txt", "lista_inventario.txt");
+  } else {
+    std::cout << "Error al abrir los archivos" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  for (int i = 0; i < inventario_.size(); i++) {
+    if (inventario_[i]->GetNombre() == nombre_libro) {
+      inventario_.erase(inventario_.begin() + i);
+    }
+  }
 }
 
 //Funcion que muestra el inventario

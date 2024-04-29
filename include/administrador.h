@@ -14,25 +14,26 @@ class Administrador : public Persona {
   void registrarse() override;
   bool ConsultarDisponibilidad(string,Inventario&) const {}
   void MainMenu(Inventario*, RedBibliotecas*) override;
-  void gestionarUsuarios() {
-    std::cout << "Gestionando usuarios del sistema...\n";
-  }
 
-  void anadirNuevaBiblioteca() {
-    std::cout << "Añadiendo nueva biblioteca a la red...\n";
-  }
+  // void gestionarUsuarios() {
+  //   std::cout << "Gestionando usuarios del sistema...\n";
+  // }
 
-  void gestionarServiciosOnline() {
-  	std::cout << "Gestionando servicios online...\n";
-  }
+  // void anadirNuevaBiblioteca() {
+  //   std::cout << "Añadiendo nueva biblioteca a la red...\n";
+  // }
 
-  void gestionarMedidasSeguridad() {
-    std::cout << "Gestionando medidas de seguridad...\n";
-  }
+  // void gestionarServiciosOnline() {
+  // 	std::cout << "Gestionando servicios online...\n";
+  // }
 
-  void gestionarUsuariosSistema() {
-  	std::cout << "Gestionando usuarios del sistema...\n";
-  }
+  // void gestionarMedidasSeguridad() {
+  //   std::cout << "Gestionando medidas de seguridad...\n";
+  // }
+
+  // void gestionarUsuariosSistema() {
+  // 	std::cout << "Gestionando usuarios del sistema...\n";
+  // }
 
 };
 

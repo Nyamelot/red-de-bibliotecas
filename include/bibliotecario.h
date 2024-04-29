@@ -17,25 +17,25 @@ class Bibliotecario : public Persona {
  	void ComprobarCatalogo() {}
  	bool ConsultarDisponibilidad(string,Inventario&) const {}
 
- 	void ayudarUsuario() {
-    std::cout << "Asistiendo a un usuario...\n";
-  }
+ 	// void ayudarUsuario() {
+  //   std::cout << "Asistiendo a un usuario...\n";
+  // }
 
-  void anadirLibroCatalogo() {
-    std::cout << "Añadiendo libro al catálogo...\n";
-  }
+  // void anadirLibroCatalogo() {
+  //   std::cout << "Añadiendo libro al catálogo...\n";
+  // }
 
-  void eliminarLibroCatalogo() {
-  	std::cout << "Eliminando libro del catálogo...\n";
-  }
+  // void eliminarLibroCatalogo() {
+  // 	std::cout << "Eliminando libro del catálogo...\n";
+  // }
 
-  void gestionarPrestamos() {
-    std::cout << "Gestionando préstamos...\n";
-  }
+  // void gestionarPrestamos() {
+  //   std::cout << "Gestionando préstamos...\n";
+  // }
 
-    void gestionarMultas() {
-      std::cout << "Gestionando multas...\n";
-    }
+  //   void gestionarMultas() {
+  //     std::cout << "Gestionando multas...\n";
+  //   }
 
 };
 

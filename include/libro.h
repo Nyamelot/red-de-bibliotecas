@@ -16,7 +16,7 @@
 
 class Libro {
  public:
-  Libro(std::string nombre, std::string autor, int en_prestamo, int dias_devolucion) : nombre_(nombre), nombre_autor_(autor), en_prestamo_(en_prestamo), dias_para_devolucion_(dias_devolucion)  {}
+  Libro(std::string nombre, std::string autor, int en_prestamo , int dias_devolucion) : nombre_(nombre), nombre_autor_(autor), en_prestamo_(en_prestamo), dias_para_devolucion_(dias_devolucion)  {}
   Libro(std::string nombre,std::string autor) : nombre_(nombre), nombre_autor_(autor), en_prestamo_(0),dias_para_devolucion_(-1) {}
   Libro(const Libro&) {}
   void PonerEnPrestamo(std::string);
@@ -26,6 +26,7 @@ class Libro {
   std::string GetPropietario() { return nombre_propietario_; }
   bool GetEnPrestamo() { return en_prestamo_; }
   int GetDiasParaDevolucion() { return dias_para_devolucion_; }
+  void MostrarInformacion();
 
  private:
 

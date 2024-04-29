@@ -25,6 +25,8 @@ class Inventario {
   Inventario(std::ifstream&);
   std::vector<Libro*> AgregarLibro(Libro*);
   void MostrarInventario();
+  Libro* BuscarLibro(std::string);
+  void EliminarLibro(std::string);
   
  private:
 

@@ -31,8 +31,6 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
     std::cout << "  [0] Salir\n";
     std::cout << "  [1] Iniciar sesión\n";
     std::cout << "  [2] Registrarse\n";
-    std::cout << "  [3] Mostrar inventario\n";
-    std::cout << "  [4] Mostrar biliotecas disponibles\n";
     std::cout << "  Introduzca una opción: ";
     std::cin >> option;
     if (option < 0 || option > 4) {
@@ -59,13 +57,6 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
       }
       std::cout << "\033[32m" << "\nBIENVENIDO " << nuevo_usuario->GetNombrePersona() << "!\n" << "\033[0m";
       nuevo_usuario->MainMenu(inventario, red);
-    } else if (option == 3) {
-      std::cout << "\n=== INVENTARIO ===\n";
-      inventario->MostrarInventario();
-      std::cout << std::endl;
-    } else if (option == 4) {
-      std::cout << "\n=== BIBLIOTECAS ===\n";
-      red->MostrarRed();
     }
   } while (option != 0);
   std::cout << "\nSaliendo de la sede...\n";

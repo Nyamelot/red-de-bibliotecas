@@ -16,3 +16,12 @@ void Libro::PonerEnPrestamo(std::string nombre_usuario) {
   dias_para_devolucion_ = 30;
 
 }
+
+void Libro::MostrarInformacion() {
+  std::cout << "Título: " << nombre_ << std::endl;
+  std::cout << "Autor: " << nombre_autor_ << std::endl;
+  if (nombre_propietario_ != "") std::cout << "Propietario: " << nombre_propietario_ << std::endl;
+  else std::cout << "Propietario: La Red de Bibliotecas" << std::endl;
+  std::cout << "En préstamo: " << (en_prestamo_ ? "Sí" : "No") << std::endl;
+  if (dias_para_devolucion_ != -1) std::cout << "Días para devolución: " << dias_para_devolucion_ << std::endl;
+}

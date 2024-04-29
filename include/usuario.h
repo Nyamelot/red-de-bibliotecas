@@ -19,21 +19,21 @@ class Usuario : public Persona {
   void MainMenu(Inventario*, RedBibliotecas*) override;
 
     
-  void buscarLibro() {
-    cout << "Buscando libro en el catálogo...\n";
-  }
+  // void buscarLibro() {
+  //   cout << "Buscando libro en el catálogo...\n";
+  // }
 
-  void hacerReserva() {
-    cout << "Haciendo reserva de un libro...\n";
-  }
+  // void hacerReserva() {
+  //   cout << "Haciendo reserva de un libro...\n";
+  // }
 
-  void devolverLibro() {
-  	cout << "Devolviendo un libro...\n";
-  }
+  // void devolverLibro() {
+  // 	cout << "Devolviendo un libro...\n";
+  // }
 
-  void solicitarSalaEstudio() {
-    cout << "Solicitando sala de estudio...\n";
-  }
+  // void solicitarSalaEstudio() {
+  //   cout << "Solicitando sala de estudio...\n";
+  // }
 
 };
 
