@@ -59,6 +59,8 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
       }
       std::cout << "\033[32m" << "\nBIENVENIDO " << nuevo_usuario->GetNombrePersona() << "!\n" << "\033[0m";
       nuevo_usuario->MainMenu(inventario, red);
+      delete nuevo_usuario;
+      nuevo_usuario = nullptr;
     }
   } while (option != 0);
   std::cout << "\nSaliendo de la sede...\n";

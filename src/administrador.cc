@@ -122,3 +122,34 @@ void Administrador::MainMenu(Inventario* inventario, RedBibliotecas* red) {
   } while (option != 0);
   std::cout << std::endl;
 }
+
+/**
+ * @brief Elimina un administrador
+*/
+/*void Administrador::EliminarPersona() {
+  std::ifstream archivo_temporal{"temporal.txt"};
+  std::ofstream archivo_salida{"temp.txt"};
+  std::string linea_temp;
+
+  if (archivo_temp.is_open() && archivo_salida.is_open()) {
+    while (std::getline(archivo_temp, linea_temp)) {
+      std::stringstream stream(linea_temp);
+      std::string nombre_libro_temp;
+      std::getline(stream, nombre_libro_temp, '|');
+      if (nombre_libro_temp != nombre_libro) {
+        archivo_salida << linea_temp << std::endl;
+      }
+    }
+    archivo_temp.close();
+    archivo_salida.close();
+    std::rename("temp.txt", "lista_inventario.txt");
+  } else {
+    std::cout << "Error al abrir los archivos" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  for (int i = 0; i < inventario_.size(); i++) {
+    if (inventario_[i]->GetNombre() == nombre_libro) {
+      inventario_.erase(inventario_.begin() + i);
+    }
+  }
+}*/

@@ -17,6 +17,7 @@ class Usuario : public Persona {
   Libro PedirPrestamo(Inventario&) override;
   void DevolverPrestamo(Libro*, Inventario&);
   void MainMenu(Inventario*, RedBibliotecas*) override;
+  virtual void EliminarPersona();
 
     
   // void buscarLibro() {

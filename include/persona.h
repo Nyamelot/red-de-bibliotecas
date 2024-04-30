@@ -40,8 +40,8 @@ class Persona {
   virtual bool ConsultarDisponibilidad(string,Inventario&) const {}
   virtual Libro PedirPrestamo(Inventario&) {}
   virtual void MainMenu(Inventario*, RedBibliotecas*) = 0;
-
   string GetNombrePersona() { return nombre_; }
+  virtual void EliminarPersona() = 0;
 };
 
 #endif

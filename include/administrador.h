@@ -14,6 +14,7 @@ class Administrador : public Persona {
   void registrarse() override;
   bool ConsultarDisponibilidad(string,Inventario&) const {}
   void MainMenu(Inventario*, RedBibliotecas*) override;
+  virtual void EliminarPersona();
 
   // void gestionarUsuarios() {
   //   std::cout << "Gestionando usuarios del sistema...\n";

@@ -16,6 +16,8 @@ class Bibliotecario : public Persona {
  	void MainMenu(Inventario*, RedBibliotecas*) override;
  	void ComprobarCatalogo() {}
  	bool ConsultarDisponibilidad(string,Inventario&) const {}
+  virtual void EliminarPersona();
+
 
  	// void ayudarUsuario() {
   //   std::cout << "Asistiendo a un usuario...\n";
