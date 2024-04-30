@@ -48,6 +48,8 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
       Persona* persona = controlador.IniciarSesion(usuario, contrasena);
       std::cout << "\033[32m" << "\nBIENVENIDO DE NUEVO " << persona->GetNombrePersona() << "!\n" << "\033[0m";
       persona->MainMenu(inventario, red);
+      delete persona;
+      persona = nullptr;
     } else if (option == 2) {
       std::cout << "\n=== RESGISTRARSE ===\n";
       ControladorUsuarios controlador;
