@@ -46,10 +46,14 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
       std::cin >> contrasena;
       ControladorUsuarios controlador;
       Persona* persona = controlador.IniciarSesion(usuario, contrasena);
-      std::cout << "\033[32m" << "\nBIENVENIDO DE NUEVO " << persona->GetNombrePersona() << "!\n" << "\033[0m";
-      persona->MainMenu(inventario, red);
-      delete persona;
-      persona = nullptr;
+      if (persona != nullptr) {
+        std::cout << "\033[32m" << "\nBIENVENIDO DE NUEVO " << persona->GetNombrePersona() << "!\n" << "\033[0m";
+        persona->MainMenu(inventario, red);
+        delete persona;
+        persona = nullptr;
+      } else {
+        std::cout << "El usuario o la contraseña no son correctos. Intentelo de nuevo.\n";
+      }
     } else if (option == 2) {
       std::cout << "\n=== RESGISTRARSE ===\n";
       ControladorUsuarios controlador;

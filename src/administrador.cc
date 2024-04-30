@@ -34,6 +34,7 @@ void Administrador::MainMenu(Inventario* inventario, RedBibliotecas* red) {
     std::cout << "  [6] Buscar una biblioteca\n";
     std::cout << "  [7] Añadir una biblioteca\n";
     std::cout << "  [8] Eliminar una biblioteca\n";
+    std::cout << "  [9] Eliminar la cuenta\n";
     std::cout << "  Seleccione una opción: ";
     std::cin >> option;
 
@@ -116,6 +117,21 @@ void Administrador::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       } else {
         std::cout << "\033[31m" << "\nLa biblioteca NO se encuentra en la red\n\n" << "\033[0m";
       }
+    } else if(option == 9) {
+      std::cout << "¿Seguro que desea eliminar su cuenta?\n";
+      std::cout << "Introduzca su usuario y contraseña para confirmar.\n";
+      std::string usuario{""};
+      std::string contrasena{""};
+      std::cin >> usuario;
+      std::cin >> contrasena;
+      if (usuario == nombreUsuario_ && contrasena == contrasena_) {
+        EliminarPersona();
+        std::cout << "------------------------------------------------------\n";
+        std::cout << "Cuenta eliminada con éxito. Hasta siempre " << nombre_ << "!" << std::endl;
+        return;
+      } else {
+        std::cout << "El nombre de usuario o contraseña no son correctos. Abortando..." << std::endl;
+      }
     } else {
       std::cout << "\nOpción inválida. Intente nuevamente.\n";
     }
@@ -126,30 +142,31 @@ void Administrador::MainMenu(Inventario* inventario, RedBibliotecas* red) {
 /**
  * @brief Elimina un administrador
 */
-/*void Administrador::EliminarPersona() {
-  std::ifstream archivo_temporal{"temporal.txt"};
-  std::ofstream archivo_salida{"temp.txt"};
-  std::string linea_temp;
-
-  if (archivo_temp.is_open() && archivo_salida.is_open()) {
-    while (std::getline(archivo_temp, linea_temp)) {
-      std::stringstream stream(linea_temp);
-      std::string nombre_libro_temp;
-      std::getline(stream, nombre_libro_temp, '|');
-      if (nombre_libro_temp != nombre_libro) {
-        archivo_salida << linea_temp << std::endl;
+void Administrador::EliminarPersona() {
+  std::ifstream archivo_administradores{"administradores_registrados.txt"};
+  std::ofstream nuevo_archivo_administradores{"temp.txt"};
+  std::string linea_a_comprobar{""};
+  std::string nombre_usuario{""};
+  bool primero{true};
+  if (archivo_administradores.is_open() && nuevo_archivo_administradores.is_open()) {
+    while (std::getline(archivo_administradores, linea_a_comprobar)) {
+      for (int i{0}; linea_a_comprobar[i] != ' '; ++i) {
+        nombre_usuario += linea_a_comprobar[i];
       }
+      if (nombre_usuario != this->nombreUsuario_) {
+        if (!primero) {
+          nuevo_archivo_administradores << std::endl;
+        }
+        nuevo_archivo_administradores << linea_a_comprobar;
+        primero = false;
+      }
+      nombre_usuario = "";
     }
-    archivo_temp.close();
-    archivo_salida.close();
-    std::rename("temp.txt", "lista_inventario.txt");
+    archivo_administradores.close();
+    nuevo_archivo_administradores.close();
+    std::rename("temp.txt", "administradores_registrados.txt");
   } else {
     std::cout << "Error al abrir los archivos" << std::endl;
     exit(EXIT_FAILURE);
   }
-  for (int i = 0; i < inventario_.size(); i++) {
-    if (inventario_[i]->GetNombre() == nombre_libro) {
-      inventario_.erase(inventario_.begin() + i);
-    }
-  }
-}*/
+}

@@ -26,6 +26,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
     std::cout << "  [6] Buscar una biblioteca\n";
     std::cout << "  [7] Añadir una biblioteca\n";
     std::cout << "  [8] Eliminar una biblioteca\n";
+    std::cout << "  [9] Eliminar la cuenta\n";
     std::cout << "  Seleccione una opción: ";
     std::cin >> option;
 
@@ -108,9 +109,56 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       } else {
         std::cout << "\033[31m" << "\nLa biblioteca NO se encuentra en la red\n\n" << "\033[0m";
       }
+    } else if (option == 9) {
+      std::cout << "¿Seguro que desea eliminar su cuenta?\n";
+      std::cout << "Introduzca su usuario y contraseña para confirmar.\n";
+      std::string usuario{""};
+      std::string contrasena{""};
+      std::cin >> usuario;
+      std::cin >> contrasena;
+      if (usuario == nombreUsuario_ && contrasena == contrasena_) {
+        EliminarPersona();
+        std::cout << "------------------------------------------------------\n";
+        std::cout << "Cuenta eliminada con éxito. Hasta siempre " << nombre_ << "!" << std::endl;
+        return;
+      } else {
+        std::cout << "El nombre de usuario o contraseña no son correctos. Abortando..." << std::endl;
+      }
     } else {
       std::cout << "\nOpción inválida. Intente nuevamente.\n";
     }
   } while (option != 0);
   std::cout << std::endl;
+}
+
+/**
+ * @brief Elimina un bibliotecario
+*/
+void Bibliotecario::EliminarPersona() {
+  std::ifstream archivo_bibliotecario{"bibliotecarios_registrados.txt"};
+  std::ofstream nuevo_archivo_bibliotecario{"temp.txt"};
+  std::string linea_a_comprobar{""};
+  std::string nombre_usuario{""};
+  bool primero{true};
+  if (archivo_bibliotecario.is_open() && nuevo_archivo_bibliotecario.is_open()) {
+    while (std::getline(archivo_bibliotecario, linea_a_comprobar)) {
+      for (int i{0}; linea_a_comprobar[i] != ' '; ++i) {
+        nombre_usuario += linea_a_comprobar[i];
+      }
+      if (nombre_usuario != this->nombreUsuario_) {
+        if (!primero) {
+          nuevo_archivo_bibliotecario << std::endl;
+        }
+        nuevo_archivo_bibliotecario << linea_a_comprobar;
+        primero = false;
+      }
+      nombre_usuario = "";
+    }
+    archivo_bibliotecario.close();
+    nuevo_archivo_bibliotecario.close();
+    std::rename("temp.txt", "bibliotecarios_registrados.txt");
+  } else {
+    std::cout << "Error al abrir los archivos" << std::endl;
+    exit(EXIT_FAILURE);
+  }
 }

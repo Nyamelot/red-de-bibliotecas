@@ -17,7 +17,8 @@ Libro Usuario::PedirPrestamo(Inventario& inventario) {
   std::cout << "=== Pedir préstamo === " << endl;
   std::cout << "Introduzca el libro que desea" << endl;
 
-  std::string nombreLibro, nombreAutor;
+  std::string nombreLibro{""};
+  std::string nombreAutor{""};
   std::cin >> nombreLibro;
     
   std::cout << "Introduzca el autor del libro que desea" << endl;
@@ -61,6 +62,7 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
     std::cout << "  [4] Buscar una biblioteca\n";
     std::cout << "  [5] Pedir préstamo\n";
     std::cout << "  [6] Devolver Préstamos\n";
+    std::cout << "  [7] Eliminar la cuenta\n";
     std::cout << "  Seleccione una opción: ";
     std::cin >> option;
     if (option == 0) {
@@ -105,8 +107,55 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
         // std::ifstream inventario("lista_inventario.txt");
         // Inventario inventario_obj(inventario);
+    } else if (option == 7) {
+      std::cout << "¿Seguro que desea eliminar su cuenta?\n";
+      std::cout << "Introduzca su usuario y contraseña para confirmar.\n";
+      std::string usuario{""};
+      std::string contrasena{""};
+      std::cin >> usuario;
+      std::cin >> contrasena;
+      if (usuario == nombreUsuario_ && contrasena == contrasena_) {
+        EliminarPersona();
+        std::cout << "------------------------------------------------------\n";
+        std::cout << "Cuenta eliminada con éxito. Hasta siempre " << nombre_ << "!" << std::endl;
+        return;
+      } else {
+        std::cout << "El nombre de usuario o contraseña no son correctos. Abortando..." << std::endl;
+      }
     } else {
       std::cout << "\nOpción inválida. Intente nuevamente.\n";
     }
     } while (option != 0);
+}
+
+/**
+ * @brief Elimina un usuario
+*/
+void Usuario::EliminarPersona() {
+  std::ifstream archivo_usuario{"usuarios_registrados.txt"};
+  std::ofstream nuevo_archivo_usuario{"temp.txt"};
+  std::string linea_a_comprobar{""};
+  std::string nombre_usuario{""};
+  bool primero{true};
+  if (archivo_usuario.is_open() && nuevo_archivo_usuario.is_open()) {
+    while (std::getline(archivo_usuario, linea_a_comprobar)) {
+      for (int i{0}; linea_a_comprobar[i] != ' '; ++i) {
+        nombre_usuario += linea_a_comprobar[i];
+      }
+      if (nombre_usuario != this->nombreUsuario_) {
+        if (!primero) {
+          nuevo_archivo_usuario << std::endl;
+        }
+        nuevo_archivo_usuario << linea_a_comprobar;
+        primero = false;
+      }
+      nombre_usuario = "";
+    }
+    archivo_usuario.close();
+    nuevo_archivo_usuario.close();
+    std::rename("temp.txt", "usuarios_registrados.txt");
+  } else {
+    std::cout << "Error al abrir los archivos" << std::endl;
+    exit(EXIT_FAILURE);
+  }
 }
