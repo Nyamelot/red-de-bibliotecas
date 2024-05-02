@@ -8,6 +8,7 @@
  * @brief Fichero con la definición de diferentes funciones de utilidad para el programa
 */
 #include "controlador_usuarios.h"
+#include "nif.h"
 
 /**
  * @brief Inicia la sesión del usuario que se ha pasado como argumento
@@ -273,6 +274,7 @@ Persona* ControladorUsuarios::RegistrarUsuario() {
   std::string correo;
   std::string contrasena;
   std::string nombre_usuario;
+  Nif nuevo_dni;
   // Obtenemos los datos
   std::cout << "Rellene los siguientes campos para completar el registro:" << std::endl;
   std::cout << "Nombre: ";
@@ -281,6 +283,7 @@ Persona* ControladorUsuarios::RegistrarUsuario() {
   std::cin >> apellido;
   std::cout << std::endl << "Dni: ";
   std::cin >> dni;
+  nuevo_dni = Nif(std::stol(dni));
   std::cout << std::endl << "Correo: ";
   std::cin >> correo;
   std::cout << std::endl << "Nombre de usuario: ";
@@ -315,6 +318,7 @@ Persona* ControladorUsuarios::RegistrarBibliotecario() {
   std::string correo;
   std::string contrasena;
   std::string nombre_usuario;
+  Nif nuevo_dni;
   // Obtenemos los datos
   std::cout << "Rellene los siguientes campos para completar el registro:" << std::endl;
   std::cout << "Nombre: ";
@@ -323,6 +327,7 @@ Persona* ControladorUsuarios::RegistrarBibliotecario() {
   std::cin >> apellido;
   std::cout << std::endl << "Dni: ";
   std::cin >> dni;
+  nuevo_dni = Nif(std::stol(dni));
   std::cout << std::endl << "Correo: ";
   std::cin >> correo;
   std::cout << std::endl << "Nombre de usuario: ";
@@ -357,6 +362,7 @@ Persona* ControladorUsuarios::RegistrarAdmin() {
   std::string correo;
   std::string contrasena;
   std::string nombre_usuario;
+  Nif nuevo_dni;
   // Obtenemos los datos
   std::cout << "Rellene los siguientes campos para completar el registro:" << std::endl;
   std::cout << "Nombre: ";
@@ -365,6 +371,7 @@ Persona* ControladorUsuarios::RegistrarAdmin() {
   std::cin >> apellido;
   std::cout << std::endl << "Dni: ";
   std::cin >> dni;
+  nuevo_dni = Nif(std::stol(dni));
   std::cout << std::endl << "Correo: ";
   std::cin >> correo;
   std::cout << std::endl << "Nombre de usuario: ";
