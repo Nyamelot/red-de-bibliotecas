@@ -8,39 +8,37 @@
  * @brief Fichero con la declaración de la clase Persona
 */
 
+#ifndef PERSONA_H
+#define PERSONA_H
+
 #include <iostream>
 #include <string>
 
 #include "inventario.h"
 #include "red_bibliotecas.h"
 
-#ifndef PERSONA_H
-#define PERSONA_H
-
-using namespace std;
-
 // Clase base Persona
 class Persona {
  protected:
-  string nombre_;
-  string apellidos_;
-  string dni_;
-	string correoElectronico_;
-  string rol_;
-  string contrasena_;
-  string nombreUsuario_;
+  std::string nombre_;
+  std::string apellidos_;
+  std::string dni_;
+	std::string correoElectronico_;
+  std::string rol_;
+  std::string contrasena_;
+  std::string nombreUsuario_;
 
 
  public:
-  Persona(string nombre, string apellidos, string dni, string correoElectronico, string contrasena, string nombreUsuario)
+  Persona(std::string nombre, std::string apellidos, std::string dni, std::string correoElectronico, std::string contrasena, std::string nombreUsuario)
   : nombre_(nombre), apellidos_(apellidos), dni_(dni), correoElectronico_(correoElectronico),  contrasena_(contrasena), nombreUsuario_(nombreUsuario){}
 
   virtual void iniciarSesion();
   virtual void registrarse();
-  virtual bool ConsultarDisponibilidad(string,Inventario&) const {}
+  virtual bool ConsultarDisponibilidad(std::string,Inventario&) const {}
   virtual Libro PedirPrestamo(Inventario&) {}
   virtual void MainMenu(Inventario*, RedBibliotecas*) = 0;
-  string GetNombrePersona() { return nombre_; }
+  std::string GetNombrePersona() { return nombre_; }
   virtual void EliminarPersona() = 0;
 };
 

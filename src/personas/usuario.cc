@@ -1,48 +1,48 @@
 
 #include <iostream>
 
-#include "usuario.h"
+#include "personas/usuario.h"
 
 void Usuario::iniciarSesion() {
-  std::cout << "=== Inicio de sesión como usuario ===" << endl;
+  std::cout << "=== Inicio de sesión como usuario ===" << std::endl;
   Persona::iniciarSesion();
 }
 
 void Usuario::registrarse() {
-  std::cout << "=== Registro de usuario ===" << endl;
+  std::cout << "=== Registro de usuario ===" << std::endl;
   Persona::registrarse();
 }
 
 Libro Usuario::PedirPrestamo(Inventario& inventario) {
-  std::cout << "=== Pedir préstamo === " << endl;
-  std::cout << "Introduzca el libro que desea" << endl;
+  std::cout << "=== Pedir préstamo === " << std::endl;
+  std::cout << "Introduzca el libro que desea" << std::endl;
 
   std::string nombreLibro{""};
   std::string nombreAutor{""};
   std::cin >> nombreLibro;
     
-  std::cout << "Introduzca el autor del libro que desea" << endl;
+  std::cout << "Introduzca el autor del libro que desea" << std::endl;
   std::cin >> nombreAutor;
 
   if (ConsultarDisponibilidad(nombreLibro,inventario)) {
-    std::cout << "Libro disponible" << endl;
+    std::cout << "Libro disponible" << std::endl;
     Libro libro(nombreLibro, nombreAutor);
     return libro;
   } else {
-    std::cout << "El libro no se encuentra disponible" << endl;
+    std::cout << "El libro no se encuentra disponible" << std::endl;
     exit(EXIT_FAILURE);
   }
 }
 
 //Devolver prestamo 
 void Usuario::DevolverPrestamo(Libro* libro, Inventario& inventario) {
-  std::cout << "=== Devolver préstamo ===" << endl;
-  std::cout << "Introduzca el libro que desea devolver" << endl;
+  std::cout << "=== Devolver préstamo ===" << std::endl;
+  std::cout << "Introduzca el libro que desea devolver" << std::endl;
 
   std::string nombreLibro, nombreAutor;
   std::cin >> nombreLibro;
     
-  std::cout << "Introduzca el autor del libro que desea devolver" << endl;
+  std::cout << "Introduzca el autor del libro que desea devolver" << std::endl;
   std::cin >> nombreAutor;
 
   inventario.AgregarLibro(libro);
@@ -82,7 +82,7 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       if (inventario->BuscarLibro(nombre_libro) != nullptr) {
         std::cout << "\033[32m" << "\nEl libro se encuentra en el inventario.\n" << "\033[0m";
         inventario->BuscarLibro(nombre_libro)->MostrarInformacion();
-        std::cout << endl;
+        std::cout << std::endl;
       } else {
         std::cout << "\033[31m" << "\nEl libro NO se encuentra en el inventario.\n\n" << "\033[0m";
       }
@@ -94,7 +94,7 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       if (red->BuscarBiblioteca(nombre_biblioteca) != nullptr) {
         std::cout << "\033[32m" << "\nLa biblioteca se encuentra en la red.\n" << "\033[0m";
         red->BuscarBiblioteca(nombre_biblioteca)->MostrarInformacionBiblioteca();
-        std::cout << endl;
+        std::cout << std::endl;
       } else {
         std::cout << "\033[31m" << "\nLa biblioteca NO se encuentra en la red.\n\n" << "\033[0m";
       }

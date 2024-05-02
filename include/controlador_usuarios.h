@@ -11,16 +11,13 @@
 #include <iostream>
 #include <fstream>
 
-#include "persona.h"
-#include "usuario.h"
-#include "bibliotecario.h"
-#include "administrador.h"
+#include "personas.h"
 
 #ifndef CONTROLADOR_USUARIOS_H
 #define CONTROLADOR_USUARIOS_H
 
 class ControladorUsuarios {
-  public:
+ public:
   ControladorUsuarios() {  }
   ~ControladorUsuarios() {  }
   Persona* IniciarSesion(std::string nombre_usuario, std::string contrasena);

@@ -1,3 +1,12 @@
+/**
+ * Universidad de La Laguna
+ * Escuela Superior de Ingniería y tecnología
+ * Grado en Ingeniería Informática
+ * Fundamentos de Ingeniería del Software
+ * 
+ * @date 15 Abr 2024
+ * @brief Fichero con la declaración de la clase Persona
+*/
 
 #ifndef BIBLIOTECARIO_H_
 #define BIBLIOTECARIO_H_
@@ -8,14 +17,14 @@
 
 class Bibliotecario : public Persona {
  public:
- 	Bibliotecario(string nombre, string apellidos, string dni, string correoElectronico, string contrasena, string nombreUsuario)
+ 	Bibliotecario(std::string nombre, std::string apellidos, std::string dni, std::string correoElectronico, std::string contrasena, std::string nombreUsuario)
  	: Persona(nombre, apellidos, dni, correoElectronico, contrasena, nombreUsuario) {}
 
  	void iniciarSesion() override;
  	void registrarse() override;
  	void MainMenu(Inventario*, RedBibliotecas*) override;
  	void ComprobarCatalogo() {}
- 	bool ConsultarDisponibilidad(string,Inventario&) const {}
+ 	bool ConsultarDisponibilidad(std::string,Inventario&) const {}
   virtual void EliminarPersona();
 
 

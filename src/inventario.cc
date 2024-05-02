@@ -18,7 +18,7 @@ Inventario::Inventario(std::ifstream& archivo_inventario) {
   int prestamo_int, dias_int;
 
   //Si se abre el fichero
-  if (AbrirInventario(archivo_inventario,"lista_inventario.txt")) {
+  if (AbrirInventario(archivo_inventario,"data/lista_inventario.txt")) {
 
     //Leemos el fichero por lineas
     while (std::getline(archivo_inventario,linea)) {
@@ -86,7 +86,7 @@ Libro* Inventario::BuscarLibro(std::string nombre_libro) {
 //Funcion que agrega un libro al inventario
 std::vector<Libro*> Inventario::AgregarLibro(Libro* libro) {
   if (BuscarLibro(libro->GetNombre()) != nullptr) return inventario_;
-  std::ofstream archivo_salida("lista_inventario.txt", std::ios::app);
+  std::ofstream archivo_salida("data/lista_inventario.txt", std::ios::app);
   if (archivo_salida.is_open()) {
     archivo_salida << "\n" << libro->GetNombre() << "|" << libro->GetAutor() << "|" << libro->GetEnPrestamo() << "|" << libro->GetDiasParaDevolucion();
     archivo_salida.close();
@@ -99,7 +99,7 @@ std::vector<Libro*> Inventario::AgregarLibro(Libro* libro) {
 }
 
 void Inventario::EliminarLibro(std::string nombre_libro) {
-  std::ifstream archivo_temp("lista_inventario.txt");
+  std::ifstream archivo_temp("data/lista_inventario.txt");
   std::ofstream archivo_salida("temp.txt");
   std::string linea_temp;
 
@@ -114,7 +114,7 @@ void Inventario::EliminarLibro(std::string nombre_libro) {
     }
     archivo_temp.close();
     archivo_salida.close();
-    std::rename("temp.txt", "lista_inventario.txt");
+    std::rename("temp.txt", "data/lista_inventario.txt");
   } else {
     std::cout << "Error al abrir los archivos" << std::endl;
     exit(EXIT_FAILURE);
