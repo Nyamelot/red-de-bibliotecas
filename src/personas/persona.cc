@@ -10,10 +10,10 @@
 
 #include<iostream>
 
-#include "persona.h"
+#include "personas/persona.h"
 
 void Persona::iniciarSesion() {
-  std::cout << "=== Inicio de sesión ===" << endl;
+  std::cout << "=== Inicio de sesión ===" << std::endl;
   std::cout << "Introduzca el nombre de usuario: ";
   std::cin >> nombreUsuario_;
   std::cout << "Introduzca la contraseña: ";
@@ -21,7 +21,7 @@ void Persona::iniciarSesion() {
 }
 
 void Persona::registrarse() {
-  std::cout << "=== Registro de usuario ===" << endl;
+  std::cout << "=== Registro de usuario ===" << std::endl;
   std::cout << "Introduzca su nombre: ";
   std::cin >> nombre_;
   std::cout << "Introduzca sus apellidos: ";

@@ -39,7 +39,7 @@ Persona* ControladorUsuarios::IniciarSesion(std::string nombre_usuario, std::str
  * @return nullptr si no se ha encontrado al usuario o un puntero a persona si se ha encontrado.
 */
 Persona* ControladorUsuarios::BuscaUsuario(std::string nombre_usuario, std::string contrasena) {
-  std::ifstream fichero_usuarios{"usuarios_registrados.txt"};
+  std::ifstream fichero_usuarios{"data/usuarios_registrados.txt"};
   std::string nombre_a_comprobar{""};
   std::string contrasena_a_comprobar{""};
   std::string nombre{""};
@@ -97,7 +97,7 @@ Persona* ControladorUsuarios::BuscaUsuario(std::string nombre_usuario, std::stri
  * @return nullptr si no se ha encontrado al bibliotecario o un puntero a persona si se ha encontrado.
 */
 Persona* ControladorUsuarios::BuscaBibliotecario(std::string nombre_usuario, std::string contrasena) {
-  std::ifstream fichero_bibliotecarios{"bibliotecarios_registrados.txt"};
+  std::ifstream fichero_bibliotecarios{"data/bibliotecarios_registrados.txt"};
   std::string nombre_a_comprobar{""};
   std::string contrasena_a_comprobar{""};
   std::string nombre{""};
@@ -155,7 +155,7 @@ Persona* ControladorUsuarios::BuscaBibliotecario(std::string nombre_usuario, std
  * @return nullptr si no se ha encontrado al administrador o un puntero a persona si se ha encontrado.
 */
 Persona* ControladorUsuarios::BuscaAdmin(std::string nombre_usuario, std::string contrasena) {
-  std::ifstream fichero_administradores{"administradores_registrados.txt"};
+  std::ifstream fichero_administradores{"data/administradores_registrados.txt"};
   std::string nombre_a_comprobar{""};
   std::string contrasena_a_comprobar{""};
   std::string nombre{""};
@@ -267,7 +267,7 @@ Persona* ControladorUsuarios::Registrarse() {
 */
 Persona* ControladorUsuarios::RegistrarUsuario() {
   // Inicializamos variables de apoyo
-  std::ofstream fichero_usuarios{"usuarios_registrados.txt", std::ios::app};
+  std::ofstream fichero_usuarios{"data/usuarios_registrados.txt", std::ios::app};
   std::string nombre;
   std::string apellido;
   std::string dni;
@@ -311,7 +311,7 @@ Persona* ControladorUsuarios::RegistrarUsuario() {
 */
 Persona* ControladorUsuarios::RegistrarBibliotecario() {
   // Inicializamos variables de apoyo
-  std::ofstream fichero_usuarios{"bibliotecarios_registrados.txt", std::ios::app};
+  std::ofstream fichero_usuarios{"data/bibliotecarios_registrados.txt", std::ios::app};
   std::string nombre;
   std::string apellido;
   std::string dni;
@@ -355,7 +355,7 @@ Persona* ControladorUsuarios::RegistrarBibliotecario() {
 */
 Persona* ControladorUsuarios::RegistrarAdmin() {
   // Inicializamos variables de apoyo
-  std::ofstream fichero_usuarios{"administradores_registrados.txt", std::ios::app};
+  std::ofstream fichero_usuarios{"data/administradores_registrados.txt", std::ios::app};
   std::string nombre;
   std::string apellido;
   std::string dni;

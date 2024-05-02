@@ -1,15 +1,15 @@
 
 #include <iostream>
 
-#include "bibliotecario.h"
+#include "personas/bibliotecario.h"
 
 void Bibliotecario::iniciarSesion() {
-  std::cout << "=== Inicio de sesión como bibliotecario ===" << endl;
+  std::cout << "=== Inicio de sesión como bibliotecario ===" << std::endl;
   Persona::iniciarSesion();
 }
 
 void Bibliotecario::registrarse() {
-  std::cout << "=== Registro de bibliotecario ===" << endl;
+  std::cout << "=== Registro de bibliotecario ===" << std::endl;
   Persona::registrarse();
 }
 
@@ -47,7 +47,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       if (inventario->BuscarLibro(nombre_libro) != nullptr) {
         std::cout << "\033[32m" << "\nEl libro se encuentra en el inventario.\n" << "\033[0m";
         inventario->BuscarLibro(nombre_libro)->MostrarInformacion();
-        std::cout << endl;
+        std::cout << std::endl;
       } else {
         std::cout << "\033[31m" << "\nEl libro NO se encuentra en el inventario.\n\n" << "\033[0m";
       }
@@ -80,7 +80,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       if (red->BuscarBiblioteca(nombre_biblioteca) != nullptr) {
         std::cout << "\033[32m" << "\nLa biblioteca se encuentra en la red.\n" << "\033[0m";
         red->BuscarBiblioteca(nombre_biblioteca)->MostrarInformacionBiblioteca();
-        std::cout << endl;
+        std::cout << std::endl;
       } else {
         std::cout << "\033[31m" << "\nLa biblioteca NO se encuentra en la red.\n\n" << "\033[0m";
       }

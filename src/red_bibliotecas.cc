@@ -17,7 +17,7 @@ RedBibliotecas::RedBibliotecas(std::ifstream& archivo_bibliotecas) {
   std::string nombre, direccion, telefono, horario;
 
   //Si se abre el fichero
-  if (AbrirListado(archivo_bibliotecas,"lista_bibliotecas.txt")) {
+  if (AbrirListado(archivo_bibliotecas,"data/lista_bibliotecas.txt")) {
 
     //Leemos el fichero por lineas
     while (std::getline(archivo_bibliotecas,linea)) {
@@ -93,7 +93,7 @@ Biblioteca* RedBibliotecas::BuscarBiblioteca(std::string nombre_biblioteca) {
 
 std::vector<Biblioteca*> RedBibliotecas::AgregarBiblioteca(Biblioteca* biblioteca) {
   if (BuscarBiblioteca(biblioteca->GetNombre()) != nullptr) return bibliotecas_;
-  std::ofstream archivo_salida("lista_bibliotecas.txt", std::ios::app);
+  std::ofstream archivo_salida("data/lista_bibliotecas.txt", std::ios::app);
   if (archivo_salida.is_open()) {
     archivo_salida << "\n" << biblioteca->GetNombre() << "|" << biblioteca->GetDireccion() << "|" << biblioteca->GetTelefono() << "|" << biblioteca->GetHorario();
     archivo_salida.close();
@@ -106,7 +106,7 @@ std::vector<Biblioteca*> RedBibliotecas::AgregarBiblioteca(Biblioteca* bibliotec
 }
 
 void RedBibliotecas::EliminarBiblioteca(std::string nombre_biblioteca) {
-  std::ifstream archivo_temp("lista_bibliotecas.txt");
+  std::ifstream archivo_temp("data/lista_bibliotecas.txt");
   std::ofstream archivo_salida("temp.txt");
   std::string linea_temp;
   if (archivo_temp.is_open() && archivo_salida.is_open()) {
@@ -120,7 +120,7 @@ void RedBibliotecas::EliminarBiblioteca(std::string nombre_biblioteca) {
     }
     archivo_temp.close();
     archivo_salida.close();
-    std::rename("temp.txt", "lista_bibliotecas.txt");
+    std::rename("temp.txt", "data/lista_bibliotecas.txt");
   } else {
     std::cout << "Error al abrir los archivos" << std::endl;
     exit(EXIT_FAILURE);
