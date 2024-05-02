@@ -56,8 +56,11 @@ class Nif {
   Nif(long num) {
     // Verificar que el número tenga 8 dígitos
     std::string number_str = std::to_string(num);
-    if (std::to_string(num).size() != 8 && number_str.front() != '-') {
+
+    while (std::to_string(num).size() != 8 && number_str.front() != '-') {
       std::cerr << "\033[1;31m-> Error: El número debe tener 8 dígitos.\033[0m" << std::endl;
+      std::cout << "Introduzca un DNI válido: ";
+      std::cin >> num;
     }
     numero = num;
   }
