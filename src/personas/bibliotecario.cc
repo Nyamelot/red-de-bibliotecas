@@ -14,9 +14,9 @@ void Bibliotecario::registrarse() {
 }
 
 void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
-  std::cout << "\n=== MENÚ PRINCIPAL DE BIBLIOTECARIO ===\n";
   int option;
   do {
+    std::cout << "\n\033[1;33m=== MENÚ PRINCIPAL DEL BIBLIOTECARIO ===\033[0m\n";
     std::cout << "  [0] Cerrar sesión\n";
     std::cout << "  [1] Mostrar Inventario\n";
     std::cout << "  [2] Mostrar Bibliotecas\n";
@@ -31,16 +31,16 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
     std::cin >> option;
 
     if (option == 0) {
-      std::cout << "\nCerrando sesión...\n\n";
+      std::cout << "\n\033[1;32mCerrando sesión...\033[0m\n\n";
     } else if (option == 1) {
-      std::cout << "\n=== INVENTARIO ===\n";
+      std::cout << "\n\033[1;34m=== INVENTARIO ===\033[0m\n";
       inventario->MostrarInventario();
       std::cout << std::endl;
     } else if (option == 2) {
-      std::cout << "\n=== BIBLIOTECAS ===\n";
+        std::cout << "\n\033[1;34m=== BIBLIOTECAS ===\033[0m\n";
       red->MostrarRed();
     } else if (option == 3) {
-      std::cout << "\n=== BUSCAR LIBRO ===\n";
+      std::cout << "\n\033[1;34m=== BUSCAR LIBRO ===\033[0m\n";
       std::string nombre_libro;
       std::cout << "Introduzca el nombre del libro: ";
       std::getline(std::cin >> std::ws, nombre_libro);
@@ -52,7 +52,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "\033[31m" << "\nEl libro NO se encuentra en el inventario.\n\n" << "\033[0m";
       }
     } else if (option == 4) {
-      std::cout << "\n=== AÑADIR LIBRO ===\n";
+      std::cout << "\n\033[1;34m=== AÑADIR LIBRO ===\033[0m\n";
       std::string nombre_libro, nombre_autor;
       std::cout << "Introduzca el nombre del libro: ";
       std::getline(std::cin >> std::ws, nombre_libro);
@@ -62,7 +62,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       inventario->AgregarLibro(libro);
       std::cout << std::endl;
     } else if (option == 5) {
-      std::cout << "\n=== ELIMINAR LIBRO ===\n";
+      std::cout << "\n\033[1;34m=== ELIMINAR LIBRO ===\033[0m\n";
       std::string nombre_libro;
       std::cout << "Introduzca el nombre del libro: ";
       std::getline(std::cin >> std::ws, nombre_libro);
@@ -73,7 +73,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "\033[31m" << "\nEl libro NO se encuentra en el inventario.\n\n" << "\033[0m";
       }
     } else if (option == 6) {
-      std::cout << "\n=== BUSCAR BIBLIOTECA ===\n";
+      std::cout << "\n\033[1;34m=== BUSCAR BIBLIOTECA ===\033[0m\n";
       std::string nombre_biblioteca;
       std::cout << "Introduzca el nombre de la biblioteca: ";
       std::getline(std::cin >> std::ws, nombre_biblioteca);
@@ -85,7 +85,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "\033[31m" << "\nLa biblioteca NO se encuentra en la red.\n\n" << "\033[0m";
       }
     } else if (option == 7) {
-      std::cout << "\n=== AÑADIR BILBIOTECA ===\n";
+      std::cout << "\n\033[1;34m=== AÑADIR BILBIOTECA ===\033[0m\n";
       std::string nombre_biblioteca, direccion, telefono, horario;
       std::cout << "Introduzca el nombre de la bilioteca: ";
       std::getline(std::cin >> std::ws, nombre_biblioteca);
@@ -99,7 +99,7 @@ void Bibliotecario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
       red->AgregarBiblioteca(biblioteca);
       std::cout << std::endl;
     } else if (option == 8) {
-      std::cout << "\n=== ELIMINAR BIBLIOTECA ===\n";
+      std::cout << "\n\033[1;34m=== ELIMINAR BIBLIOTECA ===\033[0m\n";
       std::string nombre_biblioteca;
       std::cout << "Introduzca el nombre de la biblioteca: ";
       std::getline(std::cin >> std::ws, nombre_biblioteca);
@@ -158,7 +158,8 @@ void Bibliotecario::EliminarPersona() {
     nuevo_archivo_bibliotecario.close();
     std::rename("temp.txt", "bibliotecarios_registrados.txt");
   } else {
-    std::cout << "Error al abrir los archivos" << std::endl;
+    std::cout << "\033[31m" << "Error al abrir los archivos" << "\033[0m" << std::endl;
     exit(EXIT_FAILURE);
   }
 }
+

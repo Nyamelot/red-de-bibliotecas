@@ -54,7 +54,7 @@ void Usuario::DevolverPrestamo(Libro* libro, Inventario& inventario) {
 void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
   int option;
   do {
-    std::cout << "\n=== MENÚ PRINCIPAL DE USUARIO ===\n";
+    std::cout << "\n\033[1;33m=== MENÚ PRINCIPAL DE USUARIO ===\033[0m\n";
     std::cout << "  [0] Cerrar Sesión\n";
     std::cout << "  [1] Mostrar Inventario\n";
     std::cout << "  [2] Mostrar Bibliotecas\n";
@@ -66,16 +66,16 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
     std::cout << "  Seleccione una opción: ";
     std::cin >> option;
     if (option == 0) {
-      std::cout << "\nCerrando sesión...\n\n";
+      std::cout << "\n\033[1;32mCerrando sesión...\033[0m\n\n";
     } else if (option == 1) {
-      std::cout << "\n=== INVENTARIO ===\n";
+      std::cout << "\n\033[1;34m=== INVENTARIO ===\033[0m\n";
       inventario->MostrarInventario();
       std::cout << std::endl;
     } else if (option == 2) {
-        std::cout << "\n=== BIBLIOTECAS ===\n";
+        std::cout << "\n\033[1;34m=== BIBLIOTECAS ===\033[0m\n";
         red->MostrarRed();
     } else if (option == 3) {
-      std::cout << "\n=== BUSCAR LIBRO ===\n";
+      std::cout << "\n\033[1;34m=== BUSCAR LIBRO ===\033[0m\n";
       std::string nombre_libro;
       std::cout << "Introduzca el nombre del libro: ";
       std::getline(std::cin >> std::ws, nombre_libro);
@@ -87,7 +87,7 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "\033[31m" << "\nEl libro NO se encuentra en el inventario.\n\n" << "\033[0m";
       }
     } else if (option == 4) {
-      std::cout << "\n=== BUSCAR BIBLIOTECA ===\n";
+      std::cout << "\n\033[1;34m=== BUSCAR BIBLIOTECA ===\033[0m\n";
       std::string nombre_biblioteca;
       std::cout << "Introduzca el nombre de la biblioteca: ";
       std::getline(std::cin >> std::ws, nombre_biblioteca);
@@ -109,6 +109,7 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         // Inventario inventario_obj(inventario);
     } else if (option == 7) {
       std::cout << "¿Seguro que desea eliminar su cuenta?\n";
+
       std::cout << "Introduzca su usuario y contraseña para confirmar.\n";
       std::string usuario{""};
       std::string contrasena{""};
@@ -123,7 +124,7 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "El nombre de usuario o contraseña no son correctos. Abortando..." << std::endl;
       }
     } else {
-      std::cout << "\nOpción inválida. Intente nuevamente.\n";
+      std::cout << "\n\033[31mOpción inválida. Intente nuevamente.\033[0m\n";
     }
     } while (option != 0);
 }
@@ -155,7 +156,7 @@ void Usuario::EliminarPersona() {
     nuevo_archivo_usuario.close();
     std::rename("temp.txt", "usuarios_registrados.txt");
   } else {
-    std::cout << "Error al abrir los archivos" << std::endl;
+    std::cout << "\033[31m" << "Error al abrir los archivos" << "\033[0m" << std::endl;
     exit(EXIT_FAILURE);
   }
 }

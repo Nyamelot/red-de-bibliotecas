@@ -27,17 +27,17 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
 
   int option;
   do {
-    std::cout << "=== MENÚ INICIAL ===\n";
+    std::cout << "\033[1;33m=== MENÚ INICIAL ===\033[0m\n";
     std::cout << "  [0] Salir\n";
     std::cout << "  [1] Iniciar sesión\n";
     std::cout << "  [2] Registrarse\n";
     std::cout << "  Introduzca una opción: ";
     std::cin >> option;
     if (option < 0 || option > 4) {
-      std::cout << "\nerror. Opción no válida. Intentelo de nuevo\n\n";
+      std::cout << "\033[31m" << "\nerror. Opción no válida. Intentelo de nuevo\n\n" << "\033[0m";
     }
     if (option == 1) {
-      std::cout << "\n=== INICIAR SESIÓN ===\n";
+      std::cout << "\n\033[1;33m=== INICIAR SESIÓN ===\033[0m\n";
       std::string usuario{""};
       std::string contrasena{""};
       std::cout << "Introduzca su nombre de usuario: ";
@@ -55,7 +55,7 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "El usuario o la contraseña no son correctos. Intentelo de nuevo.\n";
       }
     } else if (option == 2) {
-      std::cout << "\n=== RESGISTRARSE ===\n";
+      std::cout << "\n\033[1;33m=== REGISTRARSE ===\033[0m\n";
       ControladorUsuarios controlador;
       Persona* nuevo_usuario = nullptr;
       while (nuevo_usuario == nullptr) {
@@ -67,7 +67,7 @@ void LoginMenu(Inventario* inventario, RedBibliotecas* red) {
       nuevo_usuario = nullptr;
     }
   } while (option != 0);
-  std::cout << "\nSaliendo de la sede...\n";
+  std::cout << "\033[32m" << "\nSaliendo de la sede...\n" << "\033[0m";
 }
 
 int main() {

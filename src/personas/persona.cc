@@ -37,3 +37,6 @@ void Persona::registrarse() {
   std::cout << "Introduce tu rol (Administrador, Usuario, Bibliotecario): ";
   std::cin >> rol_;
 }
+
+
+
