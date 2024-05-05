@@ -23,8 +23,9 @@ class Usuario : public Persona {
 
   void iniciarSesion() override;
   void registrarse() override;
-  bool ConsultarDisponibilidad(std::string, Inventario&) const {}
-  Libro PedirPrestamo(Inventario&) override;
+  bool ConsultarDisponibilidad(std::string, Inventario&) const;
+  Libro* PedirPrestamo(Inventario&) override;
+  void RegistrarPrestamo(Libro* prestamo_a_registrar);
   void DevolverPrestamo(Libro*, Inventario&);
   void MainMenu(Inventario*, RedBibliotecas*) override;
   virtual void EliminarPersona();

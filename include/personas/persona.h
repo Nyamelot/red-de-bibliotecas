@@ -36,7 +36,7 @@ class Persona {
   virtual void iniciarSesion();
   virtual void registrarse();
   virtual bool ConsultarDisponibilidad(std::string,Inventario&) const {}
-  virtual Libro PedirPrestamo(Inventario&) {}
+  virtual Libro* PedirPrestamo(Inventario&) {}
   virtual void MainMenu(Inventario*, RedBibliotecas*) = 0;
   std::string GetNombrePersona() { return nombre_; }
   virtual void EliminarPersona() = 0;

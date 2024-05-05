@@ -13,27 +13,6 @@ void Usuario::registrarse() {
   Persona::registrarse();
 }
 
-Libro Usuario::PedirPrestamo(Inventario& inventario) {
-  std::cout << "=== Pedir préstamo === " << std::endl;
-  std::cout << "Introduzca el libro que desea" << std::endl;
-
-  std::string nombreLibro{""};
-  std::string nombreAutor{""};
-  std::cin >> nombreLibro;
-    
-  std::cout << "Introduzca el autor del libro que desea" << std::endl;
-  std::cin >> nombreAutor;
-
-  if (ConsultarDisponibilidad(nombreLibro,inventario)) {
-    std::cout << "Libro disponible" << std::endl;
-    Libro libro(nombreLibro, nombreAutor);
-    return libro;
-  } else {
-    std::cout << "El libro no se encuentra disponible" << std::endl;
-    exit(EXIT_FAILURE);
-  }
-}
-
 //Devolver prestamo 
 void Usuario::DevolverPrestamo(Libro* libro, Inventario& inventario) {
   std::cout << "=== Devolver préstamo ===" << std::endl;
@@ -99,10 +78,13 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "\033[31m" << "\nLa biblioteca NO se encuentra en la red.\n\n" << "\033[0m";
       }
     } else if (option == 5) {
-      std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
-      // std::ifstream inventario("lista_inventario.txt");
-      // Inventario inventario_obj(inventario);            
-      // this->PedirPrestamo(inventario_obj);
+      //std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
+      std::ifstream inventario("lista_inventario.txt");
+      Inventario inventario_obj(inventario);
+      Libro* libro_a_prestar = this->PedirPrestamo(inventario_obj);
+      if (libro_a_prestar != nullptr) {
+        RegistrarPrestamo(libro_a_prestar);
+      }
     } else if (option == 6) {
       std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
         // std::ifstream inventario("lista_inventario.txt");
@@ -159,4 +141,82 @@ void Usuario::EliminarPersona() {
     std::cout << "\033[31m" << "Error al abrir los archivos" << "\033[0m" << std::endl;
     exit(EXIT_FAILURE);
   }
+}
+
+/**
+ * @brief Tramita el préstamo de un libro
+ * 
+ * @param Inventario de la biblioteca
+ * @return Puntero al libro prestado
+*/
+Libro* Usuario::PedirPrestamo(Inventario& inventario) {
+  std::cout << "=== Pedir préstamo === " << std::endl;
+  std::cout << "Introduzca el libro que desea" << std::endl;
+
+  std::string nombreLibro{""};
+  std::cin >> nombreLibro;
+
+  std::string nombreAutor{""};
+  std::cout << "Introduzca el autor del libro que desea" << std::endl;
+  std::cin >> nombreAutor;
+
+  if (ConsultarDisponibilidad(nombreLibro,inventario)) {
+    std::cout << "Libro disponible" << std::endl;
+    Libro* libro = new Libro(nombreLibro, nombreAutor);
+    return libro;
+  } else {
+    std::cout << "El libro no se encuentra disponible" << std::endl;
+    return nullptr;
+  }
+}
+
+/**
+ * @brief Registra el préstamo de un usuario
+ * 
+ * @param Libro que se desea prestar
+*/
+void Usuario::RegistrarPrestamo(Libro* prestamo_a_registrar) {
+  std::fstream fichero_usuarios;
+  fichero_usuarios.open("data/usuarios_registrados.txt", std::fstream::in | std::fstream::out); 
+  std::string linea_de_texto{""};
+  std::string usuario_a_comprobar{""};
+  std::stringstream nuevo_contenido_archivo;
+  bool primero{true};
+  char busqueda_final{' '};
+  while (std::getline(fichero_usuarios, linea_de_texto)) {
+    std::stringstream ss(linea_de_texto);
+    std::string nombre_usuario;
+    ss >> nombre_usuario;
+    if (nombre_usuario == nombreUsuario_) {
+      if (!primero) {
+        nuevo_contenido_archivo << std::endl;
+      }
+      nuevo_contenido_archivo << linea_de_texto << " " << prestamo_a_registrar->GetNombre();
+    } else {
+      if (!primero) {
+        nuevo_contenido_archivo << std::endl;
+      }
+      nuevo_contenido_archivo << linea_de_texto;
+    }
+    primero = false;
+  }
+  fichero_usuarios.close();
+  fichero_usuarios.open("data/usuarios_registrados.txt", std::ios::out | std::ios::trunc);
+  fichero_usuarios << nuevo_contenido_archivo.str();
+  fichero_usuarios.close();
+}
+
+/**
+ * @brief Comprueba si un libro está disponible en el inventario
+ * 
+ * @param Libro que se quiere comprobar
+ * @return true/false en función del resultado
+*/
+bool Usuario::ConsultarDisponibilidad(std::string libro_a_consultar, Inventario& inventario) const {
+  Libro* comprobacion = nullptr;
+  comprobacion = inventario.BuscarLibro(libro_a_consultar);
+  if (comprobacion != nullptr) {
+    return true;
+  }
+  return false;
 }
