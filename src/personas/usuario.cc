@@ -162,7 +162,7 @@ void Usuario::EliminarPersona() {
 }
 
 void Usuario::EscribirReseña() {
-  std::ofstream archivo_reseñas{"reseñas_registradas.txt"}; //la reseña se escribe en el documento "reseñas_registradas.txt"
+  std::ofstream archivo_reseñas{"data/reseñas_registradas.txt"}; //la reseña se escribe en el documento "reseñas_registradas.txt"
   int valoracion = -1;
   while (valoracion > 5 || valoracion < 1){
     std::cout << "Valore del 1 al 5 su experiencia" << std::endl;
