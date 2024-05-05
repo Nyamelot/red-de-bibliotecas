@@ -29,6 +29,7 @@ class Usuario : public Persona {
   void DevolverPrestamo(Libro*, Inventario&);
   void MainMenu(Inventario*, RedBibliotecas*) override;
   virtual void EliminarPersona();
+  void EscribirReseña() override;
 
     
   // void buscarLibro() {

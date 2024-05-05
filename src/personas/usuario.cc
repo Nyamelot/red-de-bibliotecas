@@ -78,7 +78,6 @@ void Usuario::MainMenu(Inventario* inventario, RedBibliotecas* red) {
         std::cout << "\033[31m" << "\nLa biblioteca NO se encuentra en la red.\n\n" << "\033[0m";
       }
     } else if (option == 5) {
-      //std::cout << "\nFunción en desarrollo... Vuelva más tarde!\n";
       std::ifstream inventario("lista_inventario.txt");
       Inventario inventario_obj(inventario);
       Libro* libro_a_prestar = this->PedirPrestamo(inventario_obj);
@@ -219,4 +218,30 @@ bool Usuario::ConsultarDisponibilidad(std::string libro_a_consultar, Inventario&
     return true;
   }
   return false;
+}
+void Usuario::EscribirReseña() {
+  std::ofstream archivo_reseñas{"data/reseñas_registradas.txt"}; //la reseña se escribe en el documento "reseñas_registradas.txt"
+  int valoracion = -1;
+  while (valoracion > 5 || valoracion < 1){
+    std::cout << "Valore del 1 al 5 su experiencia" << std::endl;
+    std::cin >> valoracion;
+    if(valoracion > 5 || valoracion < 1) {
+    std::cerr << "Error, valoracion incorrecta, pruebe un numero entre 1 y 5" << std::endl;
+    }
+  }
+
+  archivo_reseñas << this->nombre_ << " " << this->apellidos_ << ":\n"; //metemos su nombre y su puntuacion
+  archivo_reseñas << valoracion << std::endl;
+
+  char descripcion{'x'}; //para aportar si el usuario quiere poner una descripcion
+  while (descripcion != 'n' && descripcion != 'y') {
+    std::cout << "¿Quiere aportar una descripción a su reseña? [y/n]" << std::endl;
+    std::cin >> descripcion;
+    if (descripcion != 'n' && descripcion != 'y') {
+      std::cerr << "Error, respuesta incorrecta, prueba entre y/n" << std::endl;
+    }
+  }
+  std::string reseña;
+  std::getline(std::cin, reseña); //Se le pide por linea de comandos la reseña al usuario
+  archivo_reseñas << reseña << std::endl;
 }

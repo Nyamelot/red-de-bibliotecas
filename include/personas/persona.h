@@ -40,6 +40,7 @@ class Persona {
   virtual void MainMenu(Inventario*, RedBibliotecas*) = 0;
   std::string GetNombrePersona() { return nombre_; }
   virtual void EliminarPersona() = 0;
+  virtual void EscribirReseña() = 0;
 };
 
 #endif
