@@ -219,6 +219,10 @@ bool Usuario::ConsultarDisponibilidad(std::string libro_a_consultar, Inventario&
   }
   return false;
 }
+
+/**
+ * @brief Escribe una reseña de un libro
+*/
 void Usuario::EscribirReseña() {
   std::ofstream archivo_reseñas{"data/reseñas_registradas.txt"}; //la reseña se escribe en el documento "reseñas_registradas.txt"
   int valoracion = -1;
